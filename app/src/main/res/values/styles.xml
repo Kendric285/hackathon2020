@@ -20,6 +20,8 @@
         <!-- Customize your theme here. -->
         <item name="android:background">#9EFFFFFF</item>
         <item name="android:textColor">@color/startColor</item>
+        <item name="android:textColorHint">@color/startColor</item>
+        <item name="android:editTextColor">@color/startColor</item>
         <item name="android:windowAnimationStyle">@style/windowTransAnim</item>
     </style>
 
