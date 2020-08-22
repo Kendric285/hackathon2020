@@ -42,7 +42,7 @@
         android:layout_height="120dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="297dp"
+        android:layout_marginTop="270dp"
         android:layout_marginEnd="289dp"
         android:text="Food Track" />
 
@@ -51,8 +51,8 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="465dp"
-        android:layout_marginEnd="-121dp"
+        android:layout_marginTop="430dp"
+        android:layout_marginEnd="-119dp"
         android:layout_toStartOf="@+id/toFoodTracker"
         android:text="Workout" />
 
@@ -60,11 +60,20 @@
         android:id="@+id/toCalendar"
         android:layout_width="120dp"
         android:layout_height="120dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="288dp"
-        android:layout_marginBottom="488dp"
+        android:layout_marginTop="107dp"
+        android:layout_marginEnd="290dp"
         android:text="Calender" />
+
+    <Button
+        android:id="@+id/toWorkouts"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_below="@+id/toTimer"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="292dp"
+        android:text="workout Examples" />
 
 </RelativeLayout>

@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     Button toTimer;
     Button toFoodTracker;
     Button toCalendar;
+    Button toWorkouts;
     ImageView settings;
 
 
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         toCalendar = findViewById(R.id.toCalendar);
         toTimer = findViewById(R.id.toTimer);
         toFoodTracker = findViewById(R.id.toFoodTracker);
+        toWorkouts = findViewById(R.id.toWorkouts);
 
         toTimer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +85,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        toWorkouts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toWorkouts();
+            }
+        });
 
 
 
@@ -117,6 +125,11 @@ public class MainActivity extends AppCompatActivity {
         Intent toCalendar = new Intent(this, Calendar.class);
         startActivity(toCalendar);
     }
+    public void toWorkouts(){
+        Intent toWorkouts = new Intent(this, Workouts.class);
+        startActivity(toWorkouts);
+    }
+
 
 
 }
