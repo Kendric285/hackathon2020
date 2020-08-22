@@ -19,14 +19,21 @@ public class WorkoutTimer extends AppCompatActivity {
     private Button mButtonStartPause;
     private Button mButtonReset;
     private Button mButtonSet;
-    private EditText mEditTextInput;
+    private EditText mEditTextInputWork;
+    private EditText mEditTextInputRest;
+    private EditText mEditTextInputCycles;
 
     private CountDownTimer mCountDownTimer;
 
     private boolean mTimerRunning;
 
-    private long mStartTimeInMillis;
-    private long mTimerLeftInMillis = mStartTimeInMillis;
+    private long mStartTimeWork;
+    private long mStartTimeCycles;
+    private long mStartTimeRest;
+    private long mTimerLeftInMillis = mStartTimeWork;
+
+    Integer inputCyclesNum;
+
 
 
 
@@ -35,7 +42,9 @@ public class WorkoutTimer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_timer);
 
-        mEditTextInput = findViewById(R.id.edit_text_input);
+        mEditTextInputWork = findViewById(R.id.edit_text_work);
+        mEditTextInputCycles = findViewById(R.id.edit_text_cycles);
+        mEditTextInputRest = findViewById(R.id.edit_text_rest);
 
 
         mTextViewCountDown = findViewById(R.id.text_view_countdown);
@@ -49,20 +58,27 @@ public class WorkoutTimer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String input = mEditTextInput.getText().toString();
-                if (input.length() == 0){
+                String inputWork = mEditTextInputWork.getText().toString();
+                String inputRest = mEditTextInputRest.getText().toString();
+                String inputCycles = mEditTextInputCycles.getText().toString();
+                if (inputWork.length() == 0 || inputRest.length() == 0 || inputCycles.length() == 0){
                     Toast.makeText(WorkoutTimer.this, "Field can't be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                long millisInput = Long.parseLong(input) * 60000;
-                if(millisInput == 0){
+                long millisInputWork = Long.parseLong(inputWork) * 1000;
+                long millisInputRest = Long.parseLong(inputRest) * 1000;
+                inputCyclesNum = Integer.parseInt(inputCycles);
+
+                if(millisInputWork == 0){
                     Toast.makeText(WorkoutTimer.this, "Please enter a positive number", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                setTime(millisInput);
-                mEditTextInput.setText("");
+                setTime(millisInputWork);
+                mEditTextInputWork.setText("");
+                mEditTextInputCycles.setText("");
+                mEditTextInputRest.setText("");
             }
 
         });
@@ -95,8 +111,11 @@ public class WorkoutTimer extends AppCompatActivity {
 
     }
     private void setTime(long milliseconds){
-        mStartTimeInMillis = milliseconds;
+        mStartTimeWork = milliseconds;
         resetTimer();
+        startTimer();
+
+
     }
 
 
@@ -123,7 +142,7 @@ public class WorkoutTimer extends AppCompatActivity {
 
     }
     public void resetTimer(){
-        mTimerLeftInMillis = mStartTimeInMillis;
+        mTimerLeftInMillis = mStartTimeWork;
         updateCountDownText();
         updateWatchInterface();
 
@@ -139,18 +158,13 @@ public class WorkoutTimer extends AppCompatActivity {
 
     }
     public void updateCountDownText(){
-        int hours = (int) mTimerLeftInMillis/1000 / 3600;
-        int minutes = (int) mTimerLeftInMillis / 1000 % 3600 / 60;
-        int seconds = (int) mTimerLeftInMillis / 1000 % 60;
+        int minutes = (int) mTimerLeftInMillis / 60000;
+        int seconds = (int) mTimerLeftInMillis  / 1000;
 
         String timeLeftFormated;
-        if(hours > 0){
-            timeLeftFormated = String.format(Locale.getDefault(),"%02d:%02d:%02d",hours, minutes, seconds);
 
+        timeLeftFormated = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
 
-        }else {
-            timeLeftFormated = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
-        }
 
 
 
@@ -160,12 +174,16 @@ public class WorkoutTimer extends AppCompatActivity {
 
     private void updateWatchInterface() {
         if (mTimerRunning) {
-            mEditTextInput.setVisibility(View.INVISIBLE);
+            mEditTextInputWork.setVisibility(View.INVISIBLE);
+            mEditTextInputRest.setVisibility(View.INVISIBLE);
+            mEditTextInputCycles.setVisibility(View.INVISIBLE);
             mButtonSet.setVisibility(View.INVISIBLE);
             mButtonReset.setVisibility(View.INVISIBLE);
             mButtonStartPause.setText("Pause");
         } else {
-            mEditTextInput.setVisibility(View.VISIBLE);
+            mEditTextInputWork.setVisibility(View.VISIBLE);
+            mEditTextInputRest.setVisibility(View.VISIBLE);
+            mEditTextInputCycles.setVisibility(View.VISIBLE);
             mButtonSet.setVisibility(View.VISIBLE);
             mButtonStartPause.setText("Start");
             if (mTimerLeftInMillis < 1000) {
@@ -173,7 +191,7 @@ public class WorkoutTimer extends AppCompatActivity {
             } else {
                 mButtonStartPause.setVisibility(View.VISIBLE);
             }
-            if (mTimerLeftInMillis < mStartTimeInMillis) {
+            if (mTimerLeftInMillis < mStartTimeWork) {
                 mButtonReset.setVisibility(View.VISIBLE);
             } else {
                 mButtonReset.setVisibility(View.INVISIBLE);
