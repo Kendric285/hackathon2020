@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     ImageView settings;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,13 +87,12 @@ public class MainActivity extends AppCompatActivity {
         toWorkoutsActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 toWorkoutsActivity();
+
+
             }
         });
-
-
-
-
 
 
     }
@@ -110,26 +108,27 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intentSettings);
     }
 
-    public void toTimer(){
+    public void toTimer() {
         Intent toTimer = new Intent(this, WorkoutTimer.class);
         startActivity(toTimer);
 
     }
 
-    public void toTracker(){
+    public void toTracker() {
         Intent toTracker = new Intent(this, FoodTracker.class);
         startActivity(toTracker);
     }
 
-    public void toCalendar(){
+    public void toCalendar() {
         Intent toCalendar = new Intent(this, Calendar.class);
         startActivity(toCalendar);
     }
-    public void toWorkoutsActivity(){
+
+    public void toWorkoutsActivity() {
         Intent toWorkoutsActivity = new Intent(this, WorkoutsActivity.class);
         startActivity(toWorkoutsActivity);
+
+
     }
-
-
 
 }

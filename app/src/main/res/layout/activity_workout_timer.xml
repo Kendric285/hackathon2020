@@ -28,6 +28,18 @@
         android:maxLength="4" />
 
     <EditText
+        android:id="@+id/edit_text_workoutname"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="252dp"
+        android:layout_marginBottom="226dp"
+        android:hint="Activity Name"
+        android:inputType="number"
+        android:maxLength="4" />
+
+    <EditText
         android:id="@+id/edit_text_rest"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
@@ -76,6 +88,8 @@
         android:layout_marginBottom="12dp"
         android:text="Set" />
 
+
+
     <View
         android:id="@+id/view2"
         android:layout_width="350dp"
@@ -94,23 +108,11 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="132dp"
         android:layout_marginBottom="528dp"
+        android:background="#00FFFFFF"
         android:text="00:00"
         android:textColor="#000000"
         android:textSize="50sp"
         android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/button_start_pause"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-
-        android:layout_marginStart="53dp"
-        android:layout_marginEnd="98dp"
-        android:layout_marginBottom="436dp"
-        android:layout_toStartOf="@+id/button_reset"
-        android:text="Start" />
 
     <TextView
         android:id="@+id/countdown_task"
@@ -121,6 +123,7 @@
         android:layout_marginEnd="170dp"
 
         android:layout_marginBottom="605dp"
+        android:background="#00FFFFFF"
         android:text=""
         android:textColor="#000000"
         android:textSize="30sp" />
