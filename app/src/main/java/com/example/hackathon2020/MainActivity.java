@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button toTimer;
     Button toFoodTracker;
+    ImageView toSettings;
 
 
 
@@ -55,9 +56,16 @@ public class MainActivity extends AppCompatActivity {
             root.setBackgroundResource(R.drawable.background2);
         }
 
+        toSettings = findViewById(R.id.settings);
         toTimer = findViewById(R.id.toTimer);
         toFoodTracker = findViewById(R.id.toFoodTracker);
 
+        toSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toTimer();
+            }
+        });
 
         toTimer.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,4 +8,6 @@
     <color name="centerColor">#191B22</color>
     <color name="endColor">#111220</color>
 
+    <color name="boxColor">#212121</color>
+    <color name="textColor">#FFFFFF</color>
 </resources>
