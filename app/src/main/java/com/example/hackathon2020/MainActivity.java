@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button toTimer;
     Button toFoodTracker;
+    Button toCalendar;
     ImageView settings;
 
 
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
             root.setBackgroundResource(R.drawable.background2);
         }
 
+        toCalendar = findViewById(R.id.toCalendar);
         toTimer = findViewById(R.id.toTimer);
         toFoodTracker = findViewById(R.id.toFoodTracker);
 
@@ -71,6 +73,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 toTracker();
+            }
+        });
+
+        toCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toCalendar();
             }
         });
 
@@ -102,7 +111,12 @@ public class MainActivity extends AppCompatActivity {
     public void toTracker(){
         Intent toTracker = new Intent(this, FoodTracker.class);
         startActivity(toTracker);
-
     }
+
+    public void toCalendar(){
+        Intent toCalendar = new Intent(this, Calendar.class);
+        startActivity(toCalendar);
+    }
+
 
 }
