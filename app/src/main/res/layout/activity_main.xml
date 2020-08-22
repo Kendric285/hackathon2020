@@ -57,6 +57,6 @@
         android:layout_marginTop="189dp"
         android:layout_marginEnd="85dp"
         android:layout_toStartOf="@+id/toFoodTracker"
-        android:text="Button" />
+        android:text="Calender" />
 
 </RelativeLayout>
