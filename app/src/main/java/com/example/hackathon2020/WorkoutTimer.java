@@ -1,6 +1,11 @@
 package com.example.hackathon2020;
 
 import androidx.appcompat.app.AppCompatActivity;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,11 +18,17 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.Locale;
 
 public class WorkoutTimer extends AppCompatActivity {
 
     SharedPref sharedpref;
+
+    OkHttpClient client;
 
     private TextView mTextViewCountDown;
     private Button mButtonStartPause;
@@ -49,6 +60,7 @@ public class WorkoutTimer extends AppCompatActivity {
 
     Integer inputCyclesNum;
     int cyclesNum;
+    String activityCalories;
 
 
 
@@ -216,7 +228,43 @@ public class WorkoutTimer extends AppCompatActivity {
 
          */
 
+        final Request request = new Request.Builder()
+                .url("")
+                .get()
+                .build();
 
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+                Log.d("mode", "onFailure: ");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    final String myResponse = response.body().string();
+                    // Log.d("mode", "onResponse: " + myResponse);
+
+                    WorkoutTimer.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                JSONObject obj = new JSONObject(myResponse);
+                                activityCalories = myResponse;
+                                //JSONArray info = obj.getJSONArray("sprites");
+                                String name = obj.getString("name");
+                                JSONObject sprites = obj.getJSONObject("sprites");
+                                //bulbasaurImageViewURL = sprites.getString("front_default");
+                                //pic();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+            }
+        });
 
     }
     public void resetTimer(){
