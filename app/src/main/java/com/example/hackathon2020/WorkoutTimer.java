@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +16,7 @@ import java.util.Locale;
 
 public class WorkoutTimer extends AppCompatActivity {
 
+    SharedPref sharedpref;
 
     private TextView mTextViewCountDown;
     private Button mButtonStartPause;
@@ -50,7 +53,23 @@ public class WorkoutTimer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedpref = new SharedPref(this);
+        if (sharedpref.mode() == 1){ setTheme(R.style.darkTheme);
+            Log.d("mode",""+sharedpref.mode()+"Choice 1");}
+        if (sharedpref.mode() == 2){ setTheme(R.style.liteTheme);
+            Log.d("mode",""+sharedpref.mode()+"Choice 2");}
+
         setContentView(R.layout.activity_workout_timer);
+
+        if (sharedpref.mode() == 1){
+            RelativeLayout root = findViewById(R.id.root);
+            root.setBackgroundResource(R.drawable.background);
+        }
+        if (sharedpref.mode() == 2){
+            RelativeLayout root = findViewById(R.id.root);
+            root.setBackgroundResource(R.drawable.background2);
+        }
+
 
         mEditTextInputWork = findViewById(R.id.edit_text_work);
         mEditTextInputCycles = findViewById(R.id.edit_text_cycles);
