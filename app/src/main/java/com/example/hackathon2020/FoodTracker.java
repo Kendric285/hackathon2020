@@ -82,10 +82,10 @@ public class FoodTracker extends AppCompatActivity {
 
     }
 
-    public void getFoodCalories(String food){
+    public int getFoodCalories(String food){
 
 
-
+        return 5;
 
     }
 }

@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         toWorkouts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toWorkouts();
+                toWorkoutExample();
             }
         });
 
@@ -126,8 +126,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(toCalendar);
     }
     public void toWorkouts(){
-        Intent toWorkouts = new Intent(this, Workouts.class);
+        Intent toWorkouts = new Intent(this, WorkoutTimer.class);
         startActivity(toWorkouts);
+    }
+    public void toWorkoutExample(){
+        Intent toExamples = new Intent(this, WorkoutExamples.class);
+        startActivity(toExamples);
     }
 
 

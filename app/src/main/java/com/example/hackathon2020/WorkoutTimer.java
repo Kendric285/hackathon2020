@@ -20,7 +20,6 @@ public class WorkoutTimer extends AppCompatActivity {
     SharedPref sharedpref;
 
     private TextView mTextViewCountDown;
-    private Button mButtonStartPause;
     private Button mButtonReset;
     private Button mButtonSet;
     private EditText mEditTextInputWork;
@@ -28,6 +27,8 @@ public class WorkoutTimer extends AppCompatActivity {
     private EditText mEditTextInputCycles;
     private TextView countdown_task;
 
+
+    private EditText editText_workoutName;
     private View background;
 
     private CountDownTimer mCountDownTimer;
@@ -38,6 +39,9 @@ public class WorkoutTimer extends AppCompatActivity {
     private int mStartTimeCycles;
     private long mStartTimeRest;
     private long mTimerLeftInMillis = mStartTimeWork;
+
+
+    String workoutName;
 
 
     long millisInputWork;
@@ -77,13 +81,13 @@ public class WorkoutTimer extends AppCompatActivity {
         mEditTextInputWork = findViewById(R.id.edit_text_work);
         mEditTextInputCycles = findViewById(R.id.edit_text_cycles);
         mEditTextInputRest = findViewById(R.id.edit_text_rest);
+        editText_workoutName = findViewById(R.id.edit_text_workoutname);
 
 
         mTextViewCountDown = findViewById(R.id.text_view_countdown);
         countdown_task = findViewById(R.id.countdown_task);
 
         mButtonSet = findViewById(R.id.button_timer_set);
-        mButtonStartPause = findViewById(R.id.button_start_pause);
         mButtonReset = findViewById(R.id.button_reset);
 
         background = findViewById(R.id.view2);
@@ -99,6 +103,9 @@ public class WorkoutTimer extends AppCompatActivity {
                 String inputWork = mEditTextInputWork.getText().toString();
                 String inputRest = mEditTextInputRest.getText().toString();
                 String inputCycles = mEditTextInputCycles.getText().toString();
+                workoutName = editText_workoutName.getText().toString();
+
+
                 if (inputWork.length() == 0 || inputRest.length() == 0 || inputCycles.length() == 0){
                     Toast.makeText(WorkoutTimer.this, "Field can't be empty", Toast.LENGTH_SHORT).show();
                     return;
@@ -114,29 +121,22 @@ public class WorkoutTimer extends AppCompatActivity {
                     return;
                 }
 
+
+
                 setTime(millisInputWork);
                 workTime = millisInputWork+500;
                 restTime = millisInputRest+500;
                 mEditTextInputWork.setText("");
                 mEditTextInputCycles.setText("");
                 mEditTextInputRest.setText("");
+                editText_workoutName.setText("");
+
             }
 
         });
 
 
-        mButtonStartPause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(mTimerRunning){
-                    pauseTimer();
-                }
-                else{
-                    startTimer();
-                }
 
-            }
-        });
 
         mButtonReset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -257,18 +257,12 @@ public class WorkoutTimer extends AppCompatActivity {
             mEditTextInputCycles.setVisibility(View.INVISIBLE);
             mButtonSet.setVisibility(View.INVISIBLE);
             mButtonReset.setVisibility(View.INVISIBLE);
-            mButtonStartPause.setText("Pause");
         } else {
             mEditTextInputWork.setVisibility(View.VISIBLE);
             mEditTextInputRest.setVisibility(View.VISIBLE);
             mEditTextInputCycles.setVisibility(View.VISIBLE);
             mButtonSet.setVisibility(View.VISIBLE);
-            mButtonStartPause.setText("Start");
-            if (mTimerLeftInMillis < 1000) {
-                mButtonStartPause.setVisibility(View.INVISIBLE);
-            } else {
-                mButtonStartPause.setVisibility(View.VISIBLE);
-            }
+
             if (mTimerLeftInMillis < mStartTimeWork) {
                 mButtonReset.setVisibility(View.VISIBLE);
             } else {
