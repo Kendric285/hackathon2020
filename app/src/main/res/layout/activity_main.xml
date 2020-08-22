@@ -7,14 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/home"
-        android:layout_width="match_parent"
-        android:layout_height="61dp"
-        android:gravity="left|center"
-        android:text="     APPNAME_"
-        android:textSize="18sp" />
-
     <ImageView
         android:id="@+id/settings"
         android:layout_width="41dp"
@@ -31,32 +23,74 @@
 
     <Button
         android:id="@+id/toFoodTracker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="99dp"
-        android:layout_marginEnd="84dp"
+        android:layout_marginTop="356dp"
+        android:layout_marginEnd="4dp"
         android:text="Food Track" />
 
     <Button
         android:id="@+id/toTimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="102dp"
-        android:layout_marginEnd="47dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginEnd="-411dp"
         android:layout_toStartOf="@+id/toFoodTracker"
         android:text="Workout" />
 
     <Button
         android:id="@+id/toCalendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="147dp"
+        android:layout_below="@+id/imageView6"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="0dp"
+        android:text="Calender" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="122dp"
+        android:layout_alignStart="@+id/toTimer"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="223dp"
-        android:layout_marginEnd="2dp"
-        android:layout_toStartOf="@+id/toFoodTracker"
-        android:text="Button" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-25dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="606dp"
+        app:srcCompat="@drawable/background2" />
+
+    <TextView
+        android:id="@+id/home"
+        android:layout_width="377dp"
+        android:layout_height="67dp"
+        android:layout_alignStart="@+id/toTimer"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_marginStart="113dp"
+        android:layout_marginBottom="31dp"
+        android:gravity="left|center"
+        android:text="QUARIN-SIZE"
+        android:textSize="36sp" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="101dp"
+        android:layout_below="@+id/toTimer"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="-3dp"
+        app:srcCompat="@drawable/background2" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@+id/toFoodTracker"
+        android:layout_marginTop="1dp"
+        app:srcCompat="@drawable/background2" />
 
 </RelativeLayout>
