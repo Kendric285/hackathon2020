@@ -19,9 +19,8 @@ public class MainActivity extends AppCompatActivity {
     Button toTimer;
     Button toFoodTracker;
     Button toCalendar;
-    Button toWorkouts;
+    Button toWorkoutsActivity;
     ImageView settings;
-
 
 
     @Override
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         toCalendar = findViewById(R.id.toCalendar);
         toTimer = findViewById(R.id.toTimer);
         toFoodTracker = findViewById(R.id.toFoodTracker);
-        toWorkouts = findViewById(R.id.toWorkouts);
+        toWorkoutsActivity = findViewById(R.id.toWorkoutsActivity);
 
         toTimer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,16 +84,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        toWorkouts.setOnClickListener(new View.OnClickListener() {
+        toWorkoutsActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toWorkoutExample();
+
+                toWorkoutsActivity();
+
+
             }
         });
-
-
-
-
 
 
     }
@@ -110,30 +108,27 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intentSettings);
     }
 
-    public void toTimer(){
+    public void toTimer() {
         Intent toTimer = new Intent(this, WorkoutTimer.class);
         startActivity(toTimer);
 
     }
 
-    public void toTracker(){
+    public void toTracker() {
         Intent toTracker = new Intent(this, FoodTracker.class);
         startActivity(toTracker);
     }
 
-    public void toCalendar(){
+    public void toCalendar() {
         Intent toCalendar = new Intent(this, Calendar.class);
         startActivity(toCalendar);
     }
-    public void toWorkouts(){
-        Intent toWorkouts = new Intent(this, WorkoutTimer.class);
-        startActivity(toWorkouts);
-    }
-    public void toWorkoutExample(){
-        Intent toExamples = new Intent(this, WorkoutExamples.class);
-        startActivity(toExamples);
-    }
+
+    public void toWorkoutsActivity() {
+        Intent toWorkoutsActivity = new Intent(this, WorkoutsActivity.class);
+        startActivity(toWorkoutsActivity);
 
 
+    }
 
 }
