@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TextView;
 
@@ -22,14 +23,11 @@ public class Calendar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        calender = (CalendarView)
-                findViewById(R.id.calender);
-        date_view = (TextView)
-                findViewById(R.id.date_view);
+        calender = (CalendarView) findViewById(R.id.calender);
+        date_view = (TextView) findViewById(R.id.date_view);
 
         // Add Listener in calendar
-        calender
-                .setOnDateChangeListener(
+        calender.setOnDateChangeListener(
                         new CalendarView
                                 .OnDateChangeListener() {
                             @Override
@@ -58,6 +56,15 @@ public class Calendar extends AppCompatActivity {
                                 date_view.setText(Date);
                             }
                         });
+
+
+        calender.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                System.out.println("long hold");
+                return true;
+            }
+        });
 
 
 

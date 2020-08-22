@@ -2,6 +2,7 @@ package com.example.hackathon2020;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -26,6 +27,8 @@ public class WorkoutTimer extends AppCompatActivity {
     private EditText mEditTextInputRest;
     private EditText mEditTextInputCycles;
     private TextView countdown_task;
+
+    private View background;
 
     private CountDownTimer mCountDownTimer;
 
@@ -82,6 +85,8 @@ public class WorkoutTimer extends AppCompatActivity {
         mButtonSet = findViewById(R.id.button_timer_set);
         mButtonStartPause = findViewById(R.id.button_start_pause);
         mButtonReset = findViewById(R.id.button_reset);
+
+        background = findViewById(R.id.view2);
 
         isWorking = true;
 
@@ -150,9 +155,11 @@ public class WorkoutTimer extends AppCompatActivity {
     }
     private void setTime(long milliseconds){
         if(inputCyclesNum%2==0) {
+                background.setBackgroundColor(Color.parseColor("#00E400"));
                 countdown_task.setText("Work");
         } else {
-                countdown_task.setText("Rest");
+            background.setBackgroundColor(Color.parseColor("#E42000"));
+            countdown_task.setText("Rest");
         }
         mStartTimeWork = milliseconds;
         resetTimer();
