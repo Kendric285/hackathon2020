@@ -1,11 +1,9 @@
 package com.example.hackathon2020;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,11 +19,11 @@ public class MainActivity extends AppCompatActivity {
     Button toTimer;
     Button toFoodTracker;
     Button toCalendar;
+    Button toWorkouts;
     ImageView settings;
 
 
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,23 +41,13 @@ public class MainActivity extends AppCompatActivity {
         sharedpref = new SharedPref(this);
         settings = findViewById(R.id.settings);
 
-        toCalendar = findViewById(R.id.toCalendar);
-        toTimer = findViewById(R.id.toTimer);
-        toFoodTracker = findViewById(R.id.toFoodTracker);
-
         if (sharedpref.mode() == 1) {
             ImageView settings = findViewById(R.id.settings);
             settings.setImageResource(R.drawable.settings);
-            toCalendar.setBackground(getDrawable(R.drawable.roundcorner));
-            toTimer.setBackground(getDrawable(R.drawable.roundcorner));
-            toFoodTracker.setBackground(getDrawable(R.drawable.roundcorner));
         }
         if (sharedpref.mode() == 2) {
             ImageView settings = findViewById(R.id.settings);
             settings.setImageResource(R.drawable.settings2);
-            toCalendar.setBackground(getDrawable(R.drawable.roundcorner2));
-            toTimer.setBackground(getDrawable(R.drawable.roundcorner2));
-            toFoodTracker.setBackground(getDrawable(R.drawable.roundcorner2));
         }
 
         if (sharedpref.mode() == 1) {
@@ -70,6 +58,11 @@ public class MainActivity extends AppCompatActivity {
             RelativeLayout root = findViewById(R.id.root);
             root.setBackgroundResource(R.drawable.background2);
         }
+
+        toCalendar = findViewById(R.id.toCalendar);
+        toTimer = findViewById(R.id.toTimer);
+        toFoodTracker = findViewById(R.id.toFoodTracker);
+        toWorkouts = findViewById(R.id.toWorkouts);
 
         toTimer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +85,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        toWorkouts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toWorkouts();
+            }
+        });
 
 
 
@@ -126,6 +125,11 @@ public class MainActivity extends AppCompatActivity {
         Intent toCalendar = new Intent(this, Calendar.class);
         startActivity(toCalendar);
     }
+    public void toWorkouts(){
+        Intent toWorkouts = new Intent(this, Workouts.class);
+        startActivity(toWorkouts);
+    }
+
 
 
 }
