@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,8 +24,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         sharedpref = new SharedPref(this);
+        //sharedpref.changeMode(2);
         if (sharedpref.mode() == 1) {
             setTheme(R.style.darkTheme);
             Log.d("mode", "" + sharedpref.mode() + "Choice 1");
@@ -32,6 +34,27 @@ public class MainActivity extends AppCompatActivity {
             setTheme(R.style.liteTheme);
             Log.d("mode", "" + sharedpref.mode() + "Choice 2");
         }
+        setContentView(R.layout.activity_main);
+        sharedpref = new SharedPref(this);
+
+        if (sharedpref.mode() == 1) {
+            ImageView settings = findViewById(R.id.settings);
+            settings.setImageResource(R.drawable.settings);
+        }
+        if (sharedpref.mode() == 2) {
+            ImageView settings = findViewById(R.id.settings);
+            settings.setImageResource(R.drawable.settings2);
+        }
+
+        if (sharedpref.mode() == 1) {
+            RelativeLayout root = findViewById(R.id.root);
+            root.setBackgroundResource(R.drawable.background);
+        }
+        if (sharedpref.mode() == 2) {
+            RelativeLayout root = findViewById(R.id.root);
+            root.setBackgroundResource(R.drawable.background2);
+        }
+
         toTimer = findViewById(R.id.toTimer);
         toFoodTracker = findViewById(R.id.toFoodTracker);
 
@@ -56,6 +79,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public void restartApp() {
+        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(i);
+        finish();
+    }
+    public void settings(View view) {
+        Intent intentSettings = new Intent(this, Settings.class);
+        startActivity(intentSettings);
     }
 
     public void toTimer(){
