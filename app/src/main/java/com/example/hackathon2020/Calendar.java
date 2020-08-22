@@ -12,6 +12,11 @@ public class Calendar extends AppCompatActivity {
     CalendarView calender;
     TextView date_view;
 
+    Integer globalYear;
+    Integer globalMonth;
+    Integer globalDay;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +48,11 @@ public class Calendar extends AppCompatActivity {
                                 // format in String type Variable
                                 // Add 1 in month because month
                                 // index is start with 0
-                                String Date
-                                        = dayOfMonth + "-"
-                                        + (month + 1) + "-" + year;
+
+                                globalYear = year;
+                                globalDay = dayOfMonth;
+                                globalMonth = month;
+                                String Date = (month + 1) + "-" + dayOfMonth + "-" + year;
 
                                 // set this date in TextView for Display
                                 date_view.setText(Date);
