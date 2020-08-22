@@ -22,6 +22,7 @@ public class WorkoutTimer extends AppCompatActivity {
     private EditText mEditTextInputWork;
     private EditText mEditTextInputRest;
     private EditText mEditTextInputCycles;
+    private TextView countdown_task;
 
     private CountDownTimer mCountDownTimer;
 
@@ -31,6 +32,12 @@ public class WorkoutTimer extends AppCompatActivity {
     private long mStartTimeCycles;
     private long mStartTimeRest;
     private long mTimerLeftInMillis = mStartTimeWork;
+
+
+    long millisInputWork;
+    long millisInputRest;
+
+    Boolean isWorking;
 
     Integer inputCyclesNum;
 
@@ -48,10 +55,13 @@ public class WorkoutTimer extends AppCompatActivity {
 
 
         mTextViewCountDown = findViewById(R.id.text_view_countdown);
+        countdown_task = findViewById(R.id.countdown_task);
 
         mButtonSet = findViewById(R.id.button_timer_set);
         mButtonStartPause = findViewById(R.id.button_start_pause);
         mButtonReset = findViewById(R.id.button_reset);
+
+        isWorking = true;
 
 
         mButtonSet.setOnClickListener(new View.OnClickListener() {
@@ -137,6 +147,22 @@ public class WorkoutTimer extends AppCompatActivity {
 
         mTimerRunning = true;
         updateWatchInterface();
+        /*
+        if(inputCyclesNum > 0) {
+            if (isWorking == true) {
+                setTime(millisInputRest);
+                isWorking = false;
+
+
+            } else {
+                setTime(millisInputWork);
+                isWorking = true;
+
+            }
+            inputCyclesNum--;
+        }
+       
+         */
 
 
 

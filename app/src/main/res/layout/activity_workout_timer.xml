@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".WorkoutTimer">
 
+
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
@@ -13,7 +14,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="310dp"
         android:background="#000000" />
-
 
     <EditText
         android:id="@+id/edit_text_work"
@@ -58,8 +58,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="54dp"
-        android:layout_marginBottom="370dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="436dp"
         android:text="Reset"
         android:visibility="invisible"
         tools:visibility="visible"
@@ -104,11 +104,13 @@
         android:id="@+id/button_start_pause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="235dp"
-        android:layout_marginBottom="373dp"
 
+        android:layout_marginStart="53dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginBottom="436dp"
+        android:layout_toStartOf="@+id/button_reset"
         android:text="Start" />
 
     <TextView
