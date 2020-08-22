@@ -78,4 +78,8 @@ public class FoodTracker extends AppCompatActivity {
 
         lv.setAdapter(adapter);
     }
+
+    public void getFoodCalories(String food){
+
+    }
 }
