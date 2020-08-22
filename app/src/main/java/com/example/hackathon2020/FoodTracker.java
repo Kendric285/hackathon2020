@@ -72,5 +72,7 @@ public class FoodTracker extends AppCompatActivity {
 
     }
 
+    public void getFoodCalories(String food){
 
+    }
 }
