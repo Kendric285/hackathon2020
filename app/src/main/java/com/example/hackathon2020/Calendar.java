@@ -3,6 +3,7 @@ package com.example.hackathon2020;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
@@ -26,20 +27,33 @@ public class Calendar extends AppCompatActivity {
         calender = (CalendarView) findViewById(R.id.calender);
         date_view = (TextView) findViewById(R.id.date_view);
 
+
+        date_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        calender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
         // Add Listener in calendar
-        calender.setOnDateChangeListener(
-                        new CalendarView
-                                .OnDateChangeListener() {
-                            @Override
+        calender.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
 
                             // In this Listener have one method
                             // and in this method we will
                             // get the value of DAYS, MONTH, YEARS
-                            public void onSelectedDayChange(
+            public void onSelectedDayChange(
                                     @NonNull CalendarView view,
                                     int year,
                                     int month,
-                                    int dayOfMonth)
+                                    int dayOfMonth
+                                    )
                             {
 
                                 // Store the value of date with
@@ -53,20 +67,22 @@ public class Calendar extends AppCompatActivity {
                                 String Date = (month + 1) + "-" + dayOfMonth + "-" + year;
 
                                 // set this date in TextView for Display
+                                System.out.println("pressed");
+
                                 date_view.setText(Date);
+                                toEventsList();
                             }
                         });
 
 
-        calender.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                System.out.println("long hold");
-                return true;
-            }
-        });
 
 
-
+    }
+    public void toEventsList(){
+        Intent toEvents = new Intent(this, EventsList.class);
+        toEvents.putExtra("year", globalYear);
+        toEvents.putExtra("month", globalMonth);
+        toEvents.putExtra("day", globalDay);
+        startActivity(toEvents);
     }
 }
