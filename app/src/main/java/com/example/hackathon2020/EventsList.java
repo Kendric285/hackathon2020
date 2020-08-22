@@ -70,9 +70,6 @@ public class EventsList extends AppCompatActivity {
         else if(month + 1 == 12){
             monthName = "December";
         }
-        else{
-            monthName = "Fall";
-        }
 
         date = monthName + " " + day + ", " + year;
 
