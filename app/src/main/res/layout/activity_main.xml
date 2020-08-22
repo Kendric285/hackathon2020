@@ -37,7 +37,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="99dp"
         android:layout_marginEnd="84dp"
-        android:text="Button" />
+        android:text="Food Track" />
 
     <Button
         android:id="@+id/toTimer"
@@ -47,7 +47,7 @@
         android:layout_marginTop="102dp"
         android:layout_marginEnd="47dp"
         android:layout_toStartOf="@+id/toFoodTracker"
-        android:text="Button" />
+        android:text="Workout" />
 
     <Button
         android:id="@+id/toCalendar"
