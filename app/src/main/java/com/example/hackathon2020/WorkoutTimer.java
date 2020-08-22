@@ -37,6 +37,7 @@ public class WorkoutTimer extends AppCompatActivity {
     long millisInputWork;
     long millisInputRest;
     long workTime;
+    long restTime;
 
     Boolean isWorking;
 
@@ -70,6 +71,7 @@ public class WorkoutTimer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                countdown_task.setText("Work");
                 String inputWork = mEditTextInputWork.getText().toString();
                 String inputRest = mEditTextInputRest.getText().toString();
                 String inputCycles = mEditTextInputCycles.getText().toString();
@@ -80,7 +82,7 @@ public class WorkoutTimer extends AppCompatActivity {
 
                 long millisInputWork = Long.parseLong(inputWork) * 1000;
                 long millisInputRest = Long.parseLong(inputRest) * 1000;
-                inputCyclesNum = Integer.parseInt(inputCycles);
+                inputCyclesNum = (Integer.parseInt(inputCycles))*2;
                 cyclesNum = inputCyclesNum;
 
                 if(millisInputWork == 0){
@@ -90,6 +92,7 @@ public class WorkoutTimer extends AppCompatActivity {
 
                 setTime(millisInputWork);
                 workTime = millisInputWork+500;
+                restTime = millisInputRest+500;
                 mEditTextInputWork.setText("");
                 mEditTextInputCycles.setText("");
                 mEditTextInputRest.setText("");
@@ -127,6 +130,11 @@ public class WorkoutTimer extends AppCompatActivity {
 
     }
     private void setTime(long milliseconds){
+        if(inputCyclesNum%2==0) {
+                countdown_task.setText("Work");
+        } else {
+                countdown_task.setText("Rest");
+        }
         mStartTimeWork = milliseconds;
         resetTimer();
         startTimer();
@@ -149,9 +157,16 @@ public class WorkoutTimer extends AppCompatActivity {
                 mTimerRunning = false;
                 updateWatchInterface();
 
+
                 inputCyclesNum = inputCyclesNum-1;
-                if (inputCyclesNum > 0) {
-                    setTime(workTime);
+                if(inputCyclesNum%2==0) {
+                    if (inputCyclesNum > 0) {
+                        setTime(workTime);
+                    }
+                } else {
+                    if (inputCyclesNum > 0) {
+                        setTime(restTime);
+                    }
                 }
             }
         }.start();
