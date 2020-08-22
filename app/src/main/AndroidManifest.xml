@@ -13,6 +13,7 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".EventsList"></activity>
         <activity android:name=".Calendar" />
+        <activity android:name=".Settings" />
         <activity android:name=".FoodTracker" />
         <activity android:name=".WorkoutTimer" />
         <activity android:name=".MainActivity">
