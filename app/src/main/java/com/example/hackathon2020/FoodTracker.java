@@ -3,6 +3,7 @@ package com.example.hackathon2020;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.View;
 
@@ -52,30 +53,24 @@ public class FoodTracker extends AppCompatActivity {
        @Override
        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-           SparseBooleanArray positionchecker = lv.getCheckedItemPositions();
 
-           int count = lv.getCount();
+           itemlist.remove(position);
 
-           for (int item =count-1; item>=0; item--){
+                  // positionchecker.clear();
 
-        if (positionchecker.get(item)){
+                   adapter.notifyDataSetChanged();
 
-            adapter.remove(itemlist.get(item));
+                   return false;
 
-        }
+               }
 
-           }
-
-           positionchecker.clear();
-
-           adapter.notifyDataSetChanged();
-
-           return false;
-       }
-   });
+          });
 
         addButton.setOnClickListener(addlistener);
 
         lv.setAdapter(adapter);
+
     }
+
+
 }
