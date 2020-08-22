@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="-5dp"
+        android:background="@drawable/background"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/hi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/backBtn"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="-600dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginRight="163dp"
+        android:text="Color Scheme" />
+
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="385.5dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="609dp"
+        android:gravity="center"
+        android:onClick="home"
+        android:text="HOME"
+        android:textSize="25dp" />
+
+    <Button
+        android:id="@+id/lite"
+        android:layout_width="111dp"
+        android:layout_height="111dp"
+        android:layout_below="@+id/hi"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="224dp"
+        android:layout_marginRight="224dp"
+        android:background="#A8E4E2E2"
+        android:text="Light" />
+
+    <Button
+        android:id="@+id/dark"
+        android:layout_width="111dp"
+        android:layout_height="111dp"
+        android:layout_below="@+id/hi"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="74dp"
+        android:layout_marginRight="74dp"
+        android:background="#A83F3D3D"
+        android:text="Dark" />
+
+    <TextView
+        android:id="@+id/no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/backBtn"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="-300dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:textSize="20dp"
+        android:text="Why u still here..? thats it -.-" />
+
+</RelativeLayout>

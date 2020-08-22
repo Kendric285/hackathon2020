@@ -7,4 +7,25 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Base dark theme. -->
+    <style name="darkTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:background">@color/startColor</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:windowAnimationStyle">@style/windowTransAnim</item>
+    </style>
+
+    <!-- Base lite theme. -->
+    <style name="liteTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:background">#9EFFFFFF</item>
+        <item name="android:textColor">@color/startColor</item>
+        <item name="android:windowAnimationStyle">@style/windowTransAnim</item>
+    </style>
+
+    <style name="windowTransAnim">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
 </resources>

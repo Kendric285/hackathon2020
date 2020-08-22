@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    SharedPref sharedpref;
 
     Button toTimer;
     Button toFoodTracker;
@@ -20,8 +23,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+        sharedpref = new SharedPref(this);
+        if (sharedpref.mode() == 1) {
+            setTheme(R.style.darkTheme);
+            Log.d("mode", "" + sharedpref.mode() + "Choice 1");
+        }
+        if (sharedpref.mode() == 2) {
+            setTheme(R.style.liteTheme);
+            Log.d("mode", "" + sharedpref.mode() + "Choice 2");
+        }
         toTimer = findViewById(R.id.toTimer);
         toFoodTracker = findViewById(R.id.toFoodTracker);
 
