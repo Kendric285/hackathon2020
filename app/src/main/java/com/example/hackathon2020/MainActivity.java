@@ -98,8 +98,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void settings(View view) {
-        Intent toSettings = new Intent(this, Settings.class);
-        startActivity(toSettings);
+        Intent intentSettings = new Intent(this, Settings.class);
+        startActivity(intentSettings);
     }
 
     public void toTimer(){

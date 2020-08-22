@@ -7,51 +7,16 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/toFoodTracker"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="251dp"
-        android:layout_marginEnd="148dp"
-        android:text="Food Track" />
-
-    <Button
-        android:id="@+id/toTimer"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="-252dp"
-        android:layout_toStartOf="@+id/toFoodTracker"
-        android:background="@drawable/roundcorner2"
-        android:textSize="50dp"
-        android:text="Workout" />
-
-    <Button
-        android:id="@+id/toCalendar"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_below="@+id/imageView6"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="278dp"
-        android:layout_marginBottom="520dp"
-        android:text="Calender" />
-
     <TextView
         android:id="@+id/home"
-        android:layout_width="310dp"
-        android:layout_height="65dp"
+        android:layout_width="399dp"
+        android:layout_height="66dp"
         android:layout_alignStart="@+id/toTimer"
-        android:layout_alignTop="@+id/toCalendar"
-        android:layout_alignBottom="@+id/imageView2"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="-172dp"
-        android:layout_marginTop="-76dp"
-        android:layout_marginEnd="-2dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="-4dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="31dp"
         android:gravity="left|center"
         android:text="QUARIN-SIZE"
@@ -59,16 +24,47 @@
 
     <ImageView
         android:id="@+id/settings"
-        android:layout_width="247dp"
-        android:layout_height="191dp"
+        android:layout_width="52dp"
+        android:layout_height="61dp"
         android:layout_alignBottom="@+id/home"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="93dp"
-        android:layout_marginRight="93dp"
-        android:layout_marginBottom="-569dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="2dp"
         android:foregroundGravity="center"
         android:onClick="settings"
         app:srcCompat="@drawable/settings" />
+
+    <Button
+        android:id="@+id/toFoodTracker"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="297dp"
+        android:layout_marginEnd="289dp"
+        android:text="Food Track" />
+
+    <Button
+        android:id="@+id/toTimer"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="465dp"
+        android:layout_marginEnd="-121dp"
+        android:layout_toStartOf="@+id/toFoodTracker"
+        android:text="Workout" />
+
+    <Button
+        android:id="@+id/toCalendar"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="288dp"
+        android:layout_marginBottom="488dp"
+        android:text="Calender" />
 
 </RelativeLayout>

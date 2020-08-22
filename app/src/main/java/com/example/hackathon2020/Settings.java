@@ -1,5 +1,7 @@
 package com.example.hackathon2020;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,10 +9,26 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import androidx.appcompat.app.AppCompatActivity;
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.xml.sax.SAXException;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+
+
 
 public class Settings extends AppCompatActivity {
-    SharedPref sharedpref;
+     SharedPref sharedpref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,51 +82,4 @@ public class Settings extends AppCompatActivity {
         finish();
     }
 
-/**    public void lite(View view) {
-        try {
-            String filepath = "setting_main.xml";
-            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-            Document doc = docBuilder.parse(filepath);
-
-            Node company = doc.getFirstChild();
-
-            Node staff = doc.getElementById("hi");
-
-            NamedNodeMap attr = staff.getAttributes();
-            Node nodeAttr = attr.getNamedItem("id");
-            nodeAttr.setTextContent("2");
-
-        } catch (ParserConfigurationException pce) {
-            pce.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }**/
-
-    /** public void parseXML() {
-        XmlPullParserFactory parserFactory;
-        try {
-            parserFactory = XmlPullParserFactory.newInstance();
-            XmlPullParser parser = parserFactory.newPullParser();
-            InputStream is = getAssets().open("setting_main.xml");
-            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
-            parser.setInput(is, null);
-
-            processParsing(parser);
-
-
-        } catch (XmlPullParserException e) {
-
-        } catch (IOException e) {
-
-        }
-    }
-
-    private void processParsing(XmlPullParser parser) throws IOException, XmlPullParserException{
-
-
-    }   **/
 }
