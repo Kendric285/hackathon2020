@@ -7,12 +7,18 @@ import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.View;
 
+
+
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class FoodTracker extends AppCompatActivity {
@@ -26,6 +32,10 @@ public class FoodTracker extends AppCompatActivity {
         Button addButton;
 
         ListView lv;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +83,9 @@ public class FoodTracker extends AppCompatActivity {
     }
 
     public void getFoodCalories(String food){
+
+
+
 
     }
 }
