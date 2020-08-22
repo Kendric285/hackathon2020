@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button toTimer;
     Button toFoodTracker;
-    ImageView toSettings;
+    ImageView settings;
 
 
 
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_main);
         sharedpref = new SharedPref(this);
+        settings = findViewById(R.id.settings);
 
         if (sharedpref.mode() == 1) {
             ImageView settings = findViewById(R.id.settings);
@@ -56,16 +57,8 @@ public class MainActivity extends AppCompatActivity {
             root.setBackgroundResource(R.drawable.background2);
         }
 
-        toSettings = findViewById(R.id.settings);
         toTimer = findViewById(R.id.toTimer);
         toFoodTracker = findViewById(R.id.toFoodTracker);
-
-        toSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toTimer();
-            }
-        });
 
         toTimer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,13 +83,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void restartApp() {
-        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
         finish();
     }
+
     public void settings(View view) {
-        Intent intentSettings = new Intent(this, Settings.class);
-        startActivity(intentSettings);
+        Intent toSettings = new Intent(this, Settings.class);
+        startActivity(toSettings);
     }
 
     public void toTimer(){

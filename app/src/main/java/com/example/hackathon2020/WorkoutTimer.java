@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +16,7 @@ import java.util.Locale;
 
 public class WorkoutTimer extends AppCompatActivity {
 
+    SharedPref sharedpref;
 
     private TextView mTextViewCountDown;
     private Button mButtonStartPause;
@@ -22,17 +25,27 @@ public class WorkoutTimer extends AppCompatActivity {
     private EditText mEditTextInputWork;
     private EditText mEditTextInputRest;
     private EditText mEditTextInputCycles;
+    private TextView countdown_task;
 
     private CountDownTimer mCountDownTimer;
 
     private boolean mTimerRunning;
 
     private long mStartTimeWork;
-    private long mStartTimeCycles;
+    private int mStartTimeCycles;
     private long mStartTimeRest;
     private long mTimerLeftInMillis = mStartTimeWork;
 
+
+    long millisInputWork;
+    long millisInputRest;
+    long workTime;
+    long restTime;
+
+    Boolean isWorking;
+
     Integer inputCyclesNum;
+    int cyclesNum;
 
 
 
@@ -40,7 +53,23 @@ public class WorkoutTimer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedpref = new SharedPref(this);
+        if (sharedpref.mode() == 1){ setTheme(R.style.darkTheme);
+            Log.d("mode",""+sharedpref.mode()+"Choice 1");}
+        if (sharedpref.mode() == 2){ setTheme(R.style.liteTheme);
+            Log.d("mode",""+sharedpref.mode()+"Choice 2");}
+
         setContentView(R.layout.activity_workout_timer);
+
+        if (sharedpref.mode() == 1){
+            RelativeLayout root = findViewById(R.id.root);
+            root.setBackgroundResource(R.drawable.background);
+        }
+        if (sharedpref.mode() == 2){
+            RelativeLayout root = findViewById(R.id.root);
+            root.setBackgroundResource(R.drawable.background2);
+        }
+
 
         mEditTextInputWork = findViewById(R.id.edit_text_work);
         mEditTextInputCycles = findViewById(R.id.edit_text_cycles);
@@ -48,16 +77,20 @@ public class WorkoutTimer extends AppCompatActivity {
 
 
         mTextViewCountDown = findViewById(R.id.text_view_countdown);
+        countdown_task = findViewById(R.id.countdown_task);
 
         mButtonSet = findViewById(R.id.button_timer_set);
         mButtonStartPause = findViewById(R.id.button_start_pause);
         mButtonReset = findViewById(R.id.button_reset);
+
+        isWorking = true;
 
 
         mButtonSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                countdown_task.setText("Work");
                 String inputWork = mEditTextInputWork.getText().toString();
                 String inputRest = mEditTextInputRest.getText().toString();
                 String inputCycles = mEditTextInputCycles.getText().toString();
@@ -68,7 +101,8 @@ public class WorkoutTimer extends AppCompatActivity {
 
                 long millisInputWork = Long.parseLong(inputWork) * 1000;
                 long millisInputRest = Long.parseLong(inputRest) * 1000;
-                inputCyclesNum = Integer.parseInt(inputCycles);
+                inputCyclesNum = (Integer.parseInt(inputCycles))*2;
+                cyclesNum = inputCyclesNum;
 
                 if(millisInputWork == 0){
                     Toast.makeText(WorkoutTimer.this, "Please enter a positive number", Toast.LENGTH_SHORT).show();
@@ -76,6 +110,8 @@ public class WorkoutTimer extends AppCompatActivity {
                 }
 
                 setTime(millisInputWork);
+                workTime = millisInputWork+500;
+                restTime = millisInputRest+500;
                 mEditTextInputWork.setText("");
                 mEditTextInputCycles.setText("");
                 mEditTextInputRest.setText("");
@@ -100,7 +136,9 @@ public class WorkoutTimer extends AppCompatActivity {
         mButtonReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                inputCyclesNum = cyclesNum;
                 resetTimer();
+                setTime(workTime);
 
             }
         });
@@ -111,6 +149,11 @@ public class WorkoutTimer extends AppCompatActivity {
 
     }
     private void setTime(long milliseconds){
+        if(inputCyclesNum%2==0) {
+                countdown_task.setText("Work");
+        } else {
+                countdown_task.setText("Rest");
+        }
         mStartTimeWork = milliseconds;
         resetTimer();
         startTimer();
@@ -132,11 +175,39 @@ public class WorkoutTimer extends AppCompatActivity {
             public void onFinish() {
                 mTimerRunning = false;
                 updateWatchInterface();
+
+
+                inputCyclesNum = inputCyclesNum-1;
+                if(inputCyclesNum%2==0) {
+                    if (inputCyclesNum > 0) {
+                        setTime(workTime);
+                    }
+                } else {
+                    if (inputCyclesNum > 0) {
+                        setTime(restTime);
+                    }
+                }
             }
         }.start();
 
-        mTimerRunning = true;
-        updateWatchInterface();
+        //mTimerRunning = true;
+        //updateWatchInterface();
+        /*
+        if(inputCyclesNum > 0) {
+            if (isWorking == true) {
+                setTime(millisInputRest);
+                isWorking = false;
+
+
+            } else {
+                setTime(millisInputWork);
+                isWorking = true;
+
+            }
+            inputCyclesNum--;
+        }
+
+         */
 
 
 
