@@ -5,6 +5,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 import android.graphics.Color;
@@ -161,10 +162,63 @@ public class WorkoutTimer extends AppCompatActivity {
         });
 
         updateCountDownText();
+//String , String gender, double weight_kg, double height_cm, int age
+        final JSONObject getJson() {
+            return "{'query':'ran 3 miles',"
+                    + "'gender':'male',"
+                    + "'weight_kg':72.5,"
+                    + "'height_cm':167.64,"
+                    + "'age':30,"
+                    + "}";
+        }
 
 
+        final Request request = new Request.Builder()
+                .url("")
+                .post(getJson())
+                .addHeader("x-app-id", "e5c6e8a7")
+                .addHeader("x-app-key", "3fe3d379af2b2e4dc6f2d98740fd6287")
+                .addHeader("x-remote-user-id", "0")
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+                Log.d("mode", "onFailure: ");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    final String myResponse = response.body().string();
+                    // Log.d("mode", "onResponse: " + myResponse);
+
+                    WorkoutTimer.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                JSONObject obj = new JSONObject(myResponse);
+                                //charmander = myResponse;
+                                //JSONArray info = obj.getJSONArray("sprites");
+                                String name = obj.getString("name");
+                                JSONObject sprites = obj.getJSONObject("sprites");
+                                //charmanderImageViewURL = sprites.getString("front_default");
+                               // pic();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+            }
+        });
 
     }
+
+
+
+
     private void setTime(long milliseconds){
         if(inputCyclesNum%2==0) {
                 background.setBackgroundColor(Color.parseColor("#00E400"));
@@ -228,43 +282,7 @@ public class WorkoutTimer extends AppCompatActivity {
 
          */
 
-        final Request request = new Request.Builder()
-                .url("")
-                .get()
-                .build();
 
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-                Log.d("mode", "onFailure: ");
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    final String myResponse = response.body().string();
-                    // Log.d("mode", "onResponse: " + myResponse);
-
-                    WorkoutTimer.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                JSONObject obj = new JSONObject(myResponse);
-                                activityCalories = myResponse;
-                                //JSONArray info = obj.getJSONArray("sprites");
-                                String name = obj.getString("name");
-                                JSONObject sprites = obj.getJSONObject("sprites");
-                                //bulbasaurImageViewURL = sprites.getString("front_default");
-                                //pic();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                }
-            }
-        });
 
     }
     public void resetTimer(){
