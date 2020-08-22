@@ -29,17 +29,19 @@ public class WorkoutTimer extends AppCompatActivity {
     private boolean mTimerRunning;
 
     private long mStartTimeWork;
-    private long mStartTimeCycles;
+    private int mStartTimeCycles;
     private long mStartTimeRest;
     private long mTimerLeftInMillis = mStartTimeWork;
 
 
     long millisInputWork;
     long millisInputRest;
+    long workTime;
 
     Boolean isWorking;
 
     Integer inputCyclesNum;
+    int cyclesNum;
 
 
 
@@ -79,6 +81,7 @@ public class WorkoutTimer extends AppCompatActivity {
                 long millisInputWork = Long.parseLong(inputWork) * 1000;
                 long millisInputRest = Long.parseLong(inputRest) * 1000;
                 inputCyclesNum = Integer.parseInt(inputCycles);
+                cyclesNum = inputCyclesNum;
 
                 if(millisInputWork == 0){
                     Toast.makeText(WorkoutTimer.this, "Please enter a positive number", Toast.LENGTH_SHORT).show();
@@ -86,6 +89,7 @@ public class WorkoutTimer extends AppCompatActivity {
                 }
 
                 setTime(millisInputWork);
+                workTime = millisInputWork+500;
                 mEditTextInputWork.setText("");
                 mEditTextInputCycles.setText("");
                 mEditTextInputRest.setText("");
@@ -110,7 +114,9 @@ public class WorkoutTimer extends AppCompatActivity {
         mButtonReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                inputCyclesNum = cyclesNum;
                 resetTimer();
+                setTime(workTime);
 
             }
         });
@@ -142,11 +148,16 @@ public class WorkoutTimer extends AppCompatActivity {
             public void onFinish() {
                 mTimerRunning = false;
                 updateWatchInterface();
+
+                inputCyclesNum = inputCyclesNum-1;
+                if (inputCyclesNum > 0) {
+                    setTime(workTime);
+                }
             }
         }.start();
 
-        mTimerRunning = true;
-        updateWatchInterface();
+        //mTimerRunning = true;
+        //updateWatchInterface();
         /*
         if(inputCyclesNum > 0) {
             if (isWorking == true) {
