@@ -20,7 +20,7 @@ public class Settings extends AppCompatActivity {
             Log.d("mode",""+sharedpref.mode()+"Choice 1");}
         if (sharedpref.mode() == 2){ setTheme(R.style.liteTheme);
             Log.d("mode",""+sharedpref.mode()+"Choice 2");}
-        setContentView(R.layout.settings_main);
+        setContentView(R.layout.activity_settings);
 
         if (sharedpref.mode() == 1){
             RelativeLayout root = findViewById(R.id.root);
