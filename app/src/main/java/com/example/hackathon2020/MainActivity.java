@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Button toFoodTracker;
     Button toCalendar;
     Button toWorkoutsActivity;
+
    // Button toWorkoutVids;
     ImageView settings;
 
@@ -41,6 +42,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         sharedpref = new SharedPref(this);
         settings = findViewById(R.id.settings);
+
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                settings(settings);
+            }
+        });
 
         if (sharedpref.mode() == 1) {
             ImageView settings = findViewById(R.id.settings);

@@ -7,94 +7,88 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/home"
-        android:layout_width="392dp"
-        android:layout_height="71dp"
-        android:layout_alignStart="@+id/toTimer"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="-4dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="31dp"
-        android:gravity="center"
-        android:text="QUARIN-SIZE"
-        android:textSize="36sp" />
-
-    <ImageView
-        android:id="@+id/settings"
-        android:layout_width="52dp"
-        android:layout_height="61dp"
-        android:layout_alignBottom="@+id/home"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="6dp"
-        android:layout_marginRight="6dp"
-        android:layout_marginBottom="2dp"
-        android:foregroundGravity="center"
-        android:onClick="settings"
-        app:srcCompat="@drawable/settings" />
-
-
     <Button
         android:id="@+id/toFoodTracker"
-        android:layout_width="match_parent"
-        android:layout_height="105dp"
-        android:layout_alignParentTop="true"
+        android:layout_width="340dp"
+        android:layout_height="84dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="232dp"
-        android:layout_marginEnd="0dp"
+        android:layout_marginEnd="25dp"
         android:layout_marginBottom="448dp"
         android:background="@drawable/button_background"
-        android:text="Food Tracker " />
+        android:text="Food Tracker" />
 
-    <Button
-        android:id="@+id/toCalendar"
-        android:layout_width="match_parent"
-        android:layout_height="88dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="347dp"
-        android:layout_marginEnd="-2dp"
-        android:layout_marginBottom="345dp"
-        android:background="@drawable/button_background"
-        android:text="Calender" />
 
     <Button
         android:id="@+id/toWorkoutsActivity"
-        android:layout_width="match_parent"
-        android:layout_height="88dp"
+        android:layout_width="340dp"
+        android:layout_height="84dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="31dp"
-        android:layout_marginEnd="-12dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
         android:layout_marginBottom="152dp"
         android:background="@drawable/button_background"
         android:text="Workout Examples" />
 
     <Button
         android:id="@+id/toTimer"
-        android:layout_width="match_parent"
-        android:layout_height="88dp"
+        android:layout_width="340dp"
+        android:layout_height="84dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-397dp"
-        android:layout_marginBottom="55dp"
-        android:layout_toStartOf="@+id/toFoodTracker"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="47dp"
         android:background="@drawable/button_background"
-        android:text="Workout" />
+        android:text="Workout Timer" />
 
     <Button
         android:id="@+id/toWorkoutVids"
-        android:layout_width="match_parent"
-        android:layout_height="88dp"
+        android:layout_width="340dp"
+        android:layout_height="84dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="-8dp"
-        android:layout_marginBottom="251dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="250dp"
         android:background="@drawable/button_background"
         android:text="Workout videos" />
+
+    <Button
+        android:id="@+id/toCalendar"
+        android:layout_width="340dp"
+        android:layout_height="84dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="349dp"
+        android:background="@drawable/button_background"
+        android:text="Calendar" />
+
+    <ImageView
+        android:id="@+id/settings"
+        android:layout_width="74dp"
+        android:layout_height="76dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="632dp"
+        app:srcCompat="@drawable/settings2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="319dp"
+        android:layout_height="76dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="83dp"
+        android:layout_marginBottom="631dp"
+        android:background="@drawable/workout_timer_background"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Quaran-Size"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="50sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>
