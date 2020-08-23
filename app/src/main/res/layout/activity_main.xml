@@ -44,7 +44,9 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="259dp"
         android:layout_marginEnd="0dp"
-        android:text="Food Track" />
+        android:text="Food Track"
+        android:background="@drawable/button_background"
+        />
 
     <Button
         android:id="@+id/toTimer"
@@ -54,7 +56,9 @@
         android:layout_marginTop="357dp"
         android:layout_marginEnd="-74dp"
         android:layout_toStartOf="@+id/toFoodTracker"
-        android:text="Workout" />
+        android:text="Workout"
+        android:background="@drawable/button_background"
+        />
 
     <Button
         android:id="@+id/toCalendar"
@@ -64,7 +68,9 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="146dp"
         android:layout_marginEnd="27dp"
-        android:text="Calender" />
+        android:text="Calender"
+        android:background="@drawable/button_background"
+        />
 
     <Button
         android:id="@+id/toWorkoutsActivity"
@@ -74,6 +80,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginTop="61dp"
         android:layout_marginEnd="-9dp"
-        android:text="workout Examples" />
+        android:text="Workout Examples"
+        android:background="@drawable/button_background"
+        />
 
 </RelativeLayout>
