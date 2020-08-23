@@ -103,10 +103,12 @@ public class FoodTracker extends AppCompatActivity {
                                    JSONObject balls2 = balls.getJSONObject(0);
                                    //Log.d("idk", "run: "+balls2);
                                     balls3 = balls2.getString("nf_calories");
+                                    String balls4 = balls2.getString("nf_total_fat");
+                                        String balls5 = balls2.getString("nf_protein");
                                    //itemlist.add(itemText.getText().toString());
                                    Log.d("idk", "makePost: " + balls3);
 
-                                        itemlist.add((itemText.getText().toString())+"      "+balls3+"-calories");
+                                        itemlist.add((itemText.getText().toString())+"           "+balls3+"-calories     \n"+balls4+"-fat          "+balls5+"-protein");
                                         itemText.setText("");
                                         adapter.notifyDataSetChanged();
                                    //activityCalories = balls3;
