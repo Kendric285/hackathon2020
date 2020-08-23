@@ -35,7 +35,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="304dp"
 
-        android:text="Button" />
+        android:text="Add Event" />
 
     <ListView
         android:id="@+id/listView"
