@@ -42,8 +42,10 @@ public class WorkoutTimer extends AppCompatActivity {
     private EditText mEditTextInputRest;
     private EditText mEditTextInputCycles;
 
+
     private TextView caloriesBurnedTextView;
     private TextView countdown_task;
+    private TextView textView_cycles;
 
 
     private EditText editText_workoutName;
@@ -111,6 +113,7 @@ public class WorkoutTimer extends AppCompatActivity {
 
         mTextViewCountDown = findViewById(R.id.text_view_countdown);
         countdown_task = findViewById(R.id.countdown_task);
+        textView_cycles = findViewById(R.id.text_view_cycles);
 
         mButtonSet = findViewById(R.id.button_timer_set);
         mButtonReset = findViewById(R.id.button_reset);
@@ -118,6 +121,8 @@ public class WorkoutTimer extends AppCompatActivity {
         background = findViewById(R.id.view2);
 
         isWorking = true;
+
+        caloriesBurnedTextView.setVisibility(View.INVISIBLE);
 
 
         mButtonSet.setOnClickListener(new View.OnClickListener() {
@@ -170,6 +175,8 @@ public class WorkoutTimer extends AppCompatActivity {
                 resetTimer();
 
                 setTimeDone(0);
+                textView_cycles.setText("Cycles: " + 0);
+
 
                 OkHttpClient client = new OkHttpClient();
 
@@ -227,7 +234,6 @@ public class WorkoutTimer extends AppCompatActivity {
         });
 
         updateCountDownText();
-        caloriesBurnedTextView.setVisibility(View.INVISIBLE);
 //String , String gender, double weight_kg, double height_cm, int age
 
 
@@ -236,10 +242,13 @@ public class WorkoutTimer extends AppCompatActivity {
 
     private void setTime(long milliseconds) {
         if (inputCyclesNum % 2 == 0) {
-            background.setBackgroundColor(Color.parseColor("#00E400"));
+            int newCycles = inputCyclesNum / 2;
             countdown_task.setText("Work");
+            textView_cycles.setText("Cycles: " + (newCycles));
+
         } else {
-            background.setBackgroundColor(Color.parseColor("#E42000"));
+            int newCycles = inputCyclesNum / 2;
+
             countdown_task.setText("Rest");
         }
         mStartTimeWork = milliseconds;
@@ -251,10 +260,8 @@ public class WorkoutTimer extends AppCompatActivity {
 
     private void setTimeDone(long milliseconds) {
         if (inputCyclesNum % 2 == 0) {
-            background.setBackgroundColor(Color.parseColor("#00E400"));
             countdown_task.setText("Work");
         } else {
-            background.setBackgroundColor(Color.parseColor("#E42000"));
             countdown_task.setText("Rest");
         }
         mStartTimeWork = milliseconds;
@@ -288,6 +295,8 @@ public class WorkoutTimer extends AppCompatActivity {
                 } else {
                     if (inputCyclesNum > 0) {
                         setTime(restTime);
+                    }else{
+                        textView_cycles.setText("Cycles: " + 0);
                     }
                 }
             }
@@ -358,12 +367,17 @@ public class WorkoutTimer extends AppCompatActivity {
             mEditTextInputRest.setVisibility(View.VISIBLE);
             mEditTextInputCycles.setVisibility(View.VISIBLE);
             mButtonSet.setVisibility(View.VISIBLE);
+           // textView_cycles.setText("Cycles: " + 0);
+
 
             if (mTimerLeftInMillis < mStartTimeWork) {
 
                 mButtonReset.setVisibility(View.VISIBLE);
+
+
             } else {
                 mButtonReset.setVisibility(View.INVISIBLE);
+
             }
         }
     }
