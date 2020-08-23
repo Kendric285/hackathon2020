@@ -1,13 +1,7 @@
 package com.example.hackathon2020;
 
-import androidx.appcompat.app.AppCompatActivity;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -18,17 +12,26 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Locale;
 
+import androidx.appcompat.app.AppCompatActivity;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class WorkoutTimer extends AppCompatActivity {
 
     SharedPref sharedpref;
+    post post;
 
-    OkHttpClient client;
+   // OkHttpClient client;
 
     private TextView mTextViewCountDown;
     private Button mButtonReset;
@@ -66,6 +69,8 @@ public class WorkoutTimer extends AppCompatActivity {
     int cyclesNum;
     String activityCalories;
 
+    String food;
+
 
 
 
@@ -79,7 +84,7 @@ public class WorkoutTimer extends AppCompatActivity {
             Log.d("mode",""+sharedpref.mode()+"Choice 2");}
 
         setContentView(R.layout.activity_workout_timer);
-
+        post = new post();
         if (sharedpref.mode() == 1){
             RelativeLayout root = findViewById(R.id.root);
             root.setBackgroundResource(R.drawable.background);
@@ -156,15 +161,19 @@ public class WorkoutTimer extends AppCompatActivity {
                 inputCyclesNum = cyclesNum;
                 resetTimer();
                 setTime(workTime);
-
+                post.execute();
             }
         });
 
         updateCountDownText();
-
+//String , String gender, double weight_kg, double height_cm, int age
 
 
     }
+
+
+
+
     private void setTime(long milliseconds){
         if(inputCyclesNum%2==0) {
                 background.setBackgroundColor(Color.parseColor("#00E400"));
@@ -228,44 +237,21 @@ public class WorkoutTimer extends AppCompatActivity {
 
          */
 
-        final Request request = new Request.Builder()
-                .url("")
-                .get()
-                .build();
 
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-                Log.d("mode", "onFailure: ");
-            }
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    final String myResponse = response.body().string();
-                    // Log.d("mode", "onResponse: " + myResponse);
+    }
 
-                    WorkoutTimer.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                JSONObject obj = new JSONObject(myResponse);
-                                activityCalories = myResponse;
-                                //JSONArray info = obj.getJSONArray("sprites");
-                                String name = obj.getString("name");
-                                JSONObject sprites = obj.getJSONObject("sprites");
-                                //bulbasaurImageViewURL = sprites.getString("front_default");
-                                //pic();
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                }
-            }
-        });
-
+    public void getSON(){
+        try {
+            JSONObject json = new JSONObject(food);
+            JSONArray balls = json.getJSONArray("exercises");
+            JSONObject balls2 = balls.getJSONObject(1);
+            String balls3 = balls2.getString("nf_calories");
+            Log.d("idk", "makePost: " + balls3);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.d("idk", "makePost: " + "-_-");
+        }
     }
     public void resetTimer(){
         mTimerLeftInMillis = mStartTimeWork;
@@ -320,9 +306,44 @@ public class WorkoutTimer extends AppCompatActivity {
     }
 
 
+private class post extends AsyncTask {
+
+
+    @Override
+    protected Object doInBackground(Object[] objects) {
+
+            //  RequestBody body = new RequestBody;
+            // body = getJson();
+
+            OkHttpClient client = new OkHttpClient();
+
+            final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+            String demoQuery = "{\"query\":\"ran 3 miles\",\"gender\":\"female\",\"weight_kg\":72.5,\"height_cm\":167.64,\"age\":30}";
+
+            RequestBody body = RequestBody.create(demoQuery, JSON);
+            final Request request = new Request.Builder()
+                    .url("https://trackapi.nutritionix.com/v2/natural/exercise")
+                    .addHeader("x-app-id", "e5c6e8a7")
+                    .addHeader("x-app-key", "3fe3d379af2b2e4dc6f2d98740fd6287")
+                    .addHeader("x-remote-user-id", "0")
+                    .post(body)
+                    .build();
+            try (Response response = client.newCall(request).execute()) {
+                Log.d("idk", "makePost: " + response.body().string());
+                food = response.body().toString();
+                getSON();
+
+                return response;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return "nil";
+            }
 
 
 
+    }
+}
 
 
 }
