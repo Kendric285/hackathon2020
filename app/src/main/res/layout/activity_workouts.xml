@@ -1,79 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".WorkoutsActivity">
 
-    <ScrollView
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="307dp"
+        android:layout_height="430dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="224dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+       />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Squats"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="To do a squat, stand up straight with your feet spaced about shoulder-width apart. Look straight ahead. Start to lower your body as if you’re about to sit in a chair. Keep lowering yourself until your thighs are parallel or nearly parallel with the floor. Your upper body should lean slightly forward as your knees bend. Slowly straighten back into a standing pose. Repeat for one minute or 10 reps." />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="https://www.youtube.com/watch?v=aclHkVaku9U" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Push-Ups"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="The correct setup for a standard push-up is to position your hands shoulder-width apart, or a little bit wider. As you bend your elbows and lower toward the ground, your elbows should be at about a 45-degree angle to your body then you just PUSH-UP." />
-
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="https://www.youtube.com/watch?v=AhdtowFDKT0" />
-
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Sit-ups"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
-
-            <TextView
-                android:id="@+id/textView10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lie down on your back. Bend your legs and place feet firmly on the ground to stabilize your lower body. Cross your hands to opposite shoulders or place them behind your ears, without pulling on your neck. Curl your upper body all the way up toward your knees." />
-
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="https://www.youtube.com/watch?v=-aValknnUTQ" />
-        </LinearLayout>
-    </ScrollView>
+    <Button
+        android:id="@+id/img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Get Workout"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

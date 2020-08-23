@@ -1,7 +1,6 @@
 package com.example.hackathon2020;
 
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -20,18 +19,21 @@ import java.io.IOException;
 import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class WorkoutTimer extends AppCompatActivity {
 
     SharedPref sharedpref;
-    post post;
+    //post post;
 
-   // OkHttpClient client;
+    // OkHttpClient client;
 
     private TextView mTextViewCountDown;
     private Button mButtonReset;
@@ -39,7 +41,11 @@ public class WorkoutTimer extends AppCompatActivity {
     private EditText mEditTextInputWork;
     private EditText mEditTextInputRest;
     private EditText mEditTextInputCycles;
+
+
+    private TextView caloriesBurnedTextView;
     private TextView countdown_task;
+    private TextView textView_cycles;
 
 
     private EditText editText_workoutName;
@@ -69,27 +75,29 @@ public class WorkoutTimer extends AppCompatActivity {
     int cyclesNum;
     String activityCalories;
 
-    String food;
-
-
+    ResponseBody food;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedpref = new SharedPref(this);
-        if (sharedpref.mode() == 1){ setTheme(R.style.darkTheme);
-            Log.d("mode",""+sharedpref.mode()+"Choice 1");}
-        if (sharedpref.mode() == 2){ setTheme(R.style.liteTheme);
-            Log.d("mode",""+sharedpref.mode()+"Choice 2");}
+        if (sharedpref.mode() == 1) {
+            setTheme(R.style.darkTheme);
+            Log.d("mode", "" + sharedpref.mode() + "Choice 1");
+        }
+        if (sharedpref.mode() == 2) {
+            setTheme(R.style.liteTheme);
+            Log.d("mode", "" + sharedpref.mode() + "Choice 2");
+        }
 
         setContentView(R.layout.activity_workout_timer);
-        post = new post();
-        if (sharedpref.mode() == 1){
+//        post = new post();
+        if (sharedpref.mode() == 1) {
             RelativeLayout root = findViewById(R.id.root);
             root.setBackgroundResource(R.drawable.background);
         }
-        if (sharedpref.mode() == 2){
+        if (sharedpref.mode() == 2) {
             RelativeLayout root = findViewById(R.id.root);
             root.setBackgroundResource(R.drawable.background2);
         }
@@ -100,9 +108,12 @@ public class WorkoutTimer extends AppCompatActivity {
         mEditTextInputRest = findViewById(R.id.edit_text_rest);
         editText_workoutName = findViewById(R.id.edit_text_workoutname);
 
+        caloriesBurnedTextView = findViewById(R.id.text_view_burnedCalories);
+
 
         mTextViewCountDown = findViewById(R.id.text_view_countdown);
         countdown_task = findViewById(R.id.countdown_task);
+        textView_cycles = findViewById(R.id.text_view_cycles);
 
         mButtonSet = findViewById(R.id.button_timer_set);
         mButtonReset = findViewById(R.id.button_reset);
@@ -111,10 +122,15 @@ public class WorkoutTimer extends AppCompatActivity {
 
         isWorking = true;
 
+        caloriesBurnedTextView.setVisibility(View.INVISIBLE);
+
 
         mButtonSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                caloriesBurnedTextView.setVisibility(View.INVISIBLE);
 
                 countdown_task.setText("Work");
                 String inputWork = mEditTextInputWork.getText().toString();
@@ -123,26 +139,25 @@ public class WorkoutTimer extends AppCompatActivity {
                 workoutName = editText_workoutName.getText().toString();
 
 
-                if (inputWork.length() == 0 || inputRest.length() == 0 || inputCycles.length() == 0){
+                if (inputWork.length() == 0 || inputRest.length() == 0 || inputCycles.length() == 0) {
                     Toast.makeText(WorkoutTimer.this, "Field can't be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 long millisInputWork = Long.parseLong(inputWork) * 1000;
                 long millisInputRest = Long.parseLong(inputRest) * 1000;
-                inputCyclesNum = (Integer.parseInt(inputCycles))*2;
+                inputCyclesNum = (Integer.parseInt(inputCycles)) * 2;
                 cyclesNum = inputCyclesNum;
 
-                if(millisInputWork == 0){
+                if (millisInputWork == 0) {
                     Toast.makeText(WorkoutTimer.this, "Please enter a positive number", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
 
-
                 setTime(millisInputWork);
-                workTime = millisInputWork+500;
-                restTime = millisInputRest+500;
+                workTime = millisInputWork + 500;
+                restTime = millisInputRest + 500;
                 mEditTextInputWork.setText("");
                 mEditTextInputCycles.setText("");
                 mEditTextInputRest.setText("");
@@ -153,15 +168,68 @@ public class WorkoutTimer extends AppCompatActivity {
         });
 
 
-
-
         mButtonReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 inputCyclesNum = cyclesNum;
                 resetTimer();
-                setTime(workTime);
-                post.execute();
+
+                setTimeDone(0);
+                textView_cycles.setText("Cycles: " + 0);
+
+
+                OkHttpClient client = new OkHttpClient();
+
+                final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+
+                String demoQuery = "{\"query\":\""+ workoutName +" for "+ ((workTime/1000)*(cyclesNum/2)) +" minutes\",\"gender\":\"female\",\"weight_kg\":72.5,\"height_cm\":167.64,\"age\":30}";
+
+                RequestBody body = RequestBody.create(demoQuery, JSON);
+                final Request request = new Request.Builder()
+                        .url("https://trackapi.nutritionix.com/v2/natural/exercise")
+                        .addHeader("x-app-id", "e5c6e8a7")
+                        .addHeader("x-app-key", "3fe3d379af2b2e4dc6f2d98740fd6287")
+                        .addHeader("x-remote-user-id", "0")
+                        .post(body)
+                        .build();
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        e.printStackTrace();
+                        Log.d("mode", "onFailure: ");
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        if (response.isSuccessful()) {
+                            final String myResponse = response.body().string();
+                            // Log.d("mode", "onResponse: " + myResponse);
+
+                            WorkoutTimer.this.runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        JSONObject obj = new JSONObject(myResponse);
+                                        //Log.d("idk", "run: "+obj);
+                                        JSONArray balls = obj.getJSONArray("exercises");
+                                        //Log.d("idk", "run: "+balls);
+                                        JSONObject balls2 = balls.getJSONObject(0);
+                                        //Log.d("idk", "run: "+balls2);
+                                        String balls3 = balls2.getString("nf_calories");
+                                        Log.d("idk", "makePost: " + balls3);
+                                        activityCalories = balls3;
+                                        caloriesBurnedTextView.setVisibility(View.VISIBLE);
+                                        caloriesBurnedTextView.setText("You burned " + activityCalories+ " calories !!!!");
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
+
             }
         });
 
@@ -172,14 +240,15 @@ public class WorkoutTimer extends AppCompatActivity {
     }
 
 
+    private void setTime(long milliseconds) {
+        if (inputCyclesNum % 2 == 0) {
+            int newCycles = inputCyclesNum / 2;
+            countdown_task.setText("Work");
+            textView_cycles.setText("Cycles: " + (newCycles));
 
-
-    private void setTime(long milliseconds){
-        if(inputCyclesNum%2==0) {
-                background.setBackgroundColor(Color.parseColor("#00E400"));
-                countdown_task.setText("Work");
         } else {
-            background.setBackgroundColor(Color.parseColor("#E42000"));
+            int newCycles = inputCyclesNum / 2;
+
             countdown_task.setText("Rest");
         }
         mStartTimeWork = milliseconds;
@@ -189,8 +258,21 @@ public class WorkoutTimer extends AppCompatActivity {
 
     }
 
+    private void setTimeDone(long milliseconds) {
+        if (inputCyclesNum % 2 == 0) {
+            countdown_task.setText("Work");
+        } else {
+            countdown_task.setText("Rest");
+        }
+        mStartTimeWork = milliseconds;
+        resetTimer();
 
-    public void startTimer(){
+
+    }
+
+
+
+    public void startTimer() {
         mCountDownTimer = new CountDownTimer(mTimerLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -205,14 +287,16 @@ public class WorkoutTimer extends AppCompatActivity {
                 updateWatchInterface();
 
 
-                inputCyclesNum = inputCyclesNum-1;
-                if(inputCyclesNum%2==0) {
+                inputCyclesNum = inputCyclesNum - 1;
+                if (inputCyclesNum % 2 == 0) {
                     if (inputCyclesNum > 0) {
                         setTime(workTime);
                     }
                 } else {
                     if (inputCyclesNum > 0) {
                         setTime(restTime);
+                    }else{
+                        textView_cycles.setText("Cycles: " + 0);
                     }
                 }
             }
@@ -238,46 +322,33 @@ public class WorkoutTimer extends AppCompatActivity {
          */
 
 
-
     }
 
-    public void getSON(){
-        try {
-            JSONObject json = new JSONObject(food);
-            JSONArray balls = json.getJSONArray("exercises");
-            JSONObject balls2 = balls.getJSONObject(1);
-            String balls3 = balls2.getString("nf_calories");
-            Log.d("idk", "makePost: " + balls3);
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Log.d("idk", "makePost: " + "-_-");
-        }
-    }
-    public void resetTimer(){
+
+
+    public void resetTimer() {
         mTimerLeftInMillis = mStartTimeWork;
         updateCountDownText();
         updateWatchInterface();
 
 
-
     }
-    public void pauseTimer(){
+
+    public void pauseTimer() {
         mCountDownTimer.cancel();
         mTimerRunning = false;
         updateWatchInterface();
 
 
-
     }
-    public void updateCountDownText(){
+
+    public void updateCountDownText() {
         int minutes = (int) mTimerLeftInMillis / 60000;
-        int seconds = (int) mTimerLeftInMillis  / 1000;
+        int seconds = (int) mTimerLeftInMillis / 1000;
 
         String timeLeftFormated;
 
         timeLeftFormated = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
-
-
 
 
         mTextViewCountDown.setText(timeLeftFormated);
@@ -296,54 +367,18 @@ public class WorkoutTimer extends AppCompatActivity {
             mEditTextInputRest.setVisibility(View.VISIBLE);
             mEditTextInputCycles.setVisibility(View.VISIBLE);
             mButtonSet.setVisibility(View.VISIBLE);
+           // textView_cycles.setText("Cycles: " + 0);
+
 
             if (mTimerLeftInMillis < mStartTimeWork) {
+
                 mButtonReset.setVisibility(View.VISIBLE);
+
+
             } else {
                 mButtonReset.setVisibility(View.INVISIBLE);
+
             }
         }
     }
-
-
-private class post extends AsyncTask {
-
-
-    @Override
-    protected Object doInBackground(Object[] objects) {
-
-            //  RequestBody body = new RequestBody;
-            // body = getJson();
-
-            OkHttpClient client = new OkHttpClient();
-
-            final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
-            String demoQuery = "{\"query\":\"ran 3 miles\",\"gender\":\"female\",\"weight_kg\":72.5,\"height_cm\":167.64,\"age\":30}";
-
-            RequestBody body = RequestBody.create(demoQuery, JSON);
-            final Request request = new Request.Builder()
-                    .url("https://trackapi.nutritionix.com/v2/natural/exercise")
-                    .addHeader("x-app-id", "e5c6e8a7")
-                    .addHeader("x-app-key", "3fe3d379af2b2e4dc6f2d98740fd6287")
-                    .addHeader("x-remote-user-id", "0")
-                    .post(body)
-                    .build();
-            try (Response response = client.newCall(request).execute()) {
-                Log.d("idk", "makePost: " + response.body().string());
-                food = response.body().toString();
-                getSON();
-
-                return response;
-            } catch (IOException e) {
-                e.printStackTrace();
-                return "nil";
-            }
-
-
-
-    }
-}
-
-
 }

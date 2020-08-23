@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Calendar">
+    tools:context=".Calendar"
+    android:background="@drawable/background">
 
     <!-- Add TextView to display the date -->
     <TextView
@@ -23,6 +25,7 @@
         android:layout_marginTop="80dp"
         android:layout_marginLeft="19dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="#FFC66C"/>
 
 </RelativeLayout>

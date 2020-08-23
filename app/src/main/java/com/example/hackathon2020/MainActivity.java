@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     Button toFoodTracker;
     Button toCalendar;
     Button toWorkoutsActivity;
+
+   // Button toWorkoutVids;
+    Button toWorkoutVids;
     ImageView settings;
 
 
@@ -39,14 +43,36 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         sharedpref = new SharedPref(this);
         settings = findViewById(R.id.settings);
+        toCalendar = findViewById(R.id.toCalendar);
+        toTimer = findViewById(R.id.toTimer);
+        toFoodTracker = findViewById(R.id.toFoodTracker);
+        toWorkoutsActivity = findViewById(R.id.toWorkoutsActivity);
+        toWorkoutVids = findViewById(R.id.toWorkoutVids);
+
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                settings(settings);
+            }
+        });
 
         if (sharedpref.mode() == 1) {
             ImageView settings = findViewById(R.id.settings);
             settings.setImageResource(R.drawable.settings);
+            toCalendar.setBackgroundResource(R.drawable.button_background2);
+            toTimer.setBackgroundResource(R.drawable.button_background2);
+            toFoodTracker.setBackgroundResource(R.drawable.button_background2);
+            toWorkoutsActivity.setBackgroundResource(R.drawable.button_background2);
+            toWorkoutVids.setBackgroundResource(R.drawable.button_background2);
         }
         if (sharedpref.mode() == 2) {
             ImageView settings = findViewById(R.id.settings);
             settings.setImageResource(R.drawable.settings2);
+            toCalendar.setBackgroundResource(R.drawable.button_background);
+            toTimer.setBackgroundResource(R.drawable.button_background);
+            toFoodTracker.setBackgroundResource(R.drawable.button_background);
+            toWorkoutsActivity.setBackgroundResource(R.drawable.button_background);
+            toWorkoutVids.setBackgroundResource(R.drawable.button_background);
         }
 
         if (sharedpref.mode() == 1) {
@@ -58,10 +84,8 @@ public class MainActivity extends AppCompatActivity {
             root.setBackgroundResource(R.drawable.background2);
         }
 
-        toCalendar = findViewById(R.id.toCalendar);
-        toTimer = findViewById(R.id.toTimer);
-        toFoodTracker = findViewById(R.id.toFoodTracker);
-        toWorkoutsActivity = findViewById(R.id.toWorkoutsActivity);
+
+
 
         toTimer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,8 +118,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        toWorkoutVids.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toWorkoutVids();
+            }
+        });
 
     }
+
+
 
     public void restartApp() {
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
@@ -130,5 +162,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
+    public void toWorkoutVids(){
+        Intent toWorkoutVids = new Intent(this,Workoutvids.class);
+        startActivity(toWorkoutVids);
+    }
 }

@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">hackathon2020</string>
+    <string name="Squats">
+        <a href ="https://www.youtube.com/watch?v=aclHkVaku9U">Squats Video</a>
+    </string>
+    <string name ="Pushup">
+        <a href ="https://www.youtube.com/watch?v=AhdtowFDKT0">Push ups Video</a>
+    </string>
+    <string name="Situps">
+        <a href ="https://www.youtube.com/watch?v=-aValknnUTQ"> Sit ups Video</a>
+    </string>
 </resources>
