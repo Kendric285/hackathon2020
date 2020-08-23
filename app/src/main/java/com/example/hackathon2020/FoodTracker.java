@@ -152,22 +152,16 @@ public class FoodTracker extends AppCompatActivity {
 
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-}
-=======
     public void getFoodCalories(String food){
 
->>>>>>> parent of 81e72d2... kjb
 =======
     public void getFoodCalories(String food){
 >>>>>>> parent of 81e72d2... kjb
 
     public int getFoodCalories(String food){
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 =======
+
 
 
 =======
