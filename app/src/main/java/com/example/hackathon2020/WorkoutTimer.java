@@ -41,6 +41,8 @@ public class WorkoutTimer extends AppCompatActivity {
     private EditText mEditTextInputWork;
     private EditText mEditTextInputRest;
     private EditText mEditTextInputCycles;
+
+    private TextView caloriesBurnedTextView;
     private TextView countdown_task;
 
 
@@ -104,6 +106,8 @@ public class WorkoutTimer extends AppCompatActivity {
         mEditTextInputRest = findViewById(R.id.edit_text_rest);
         editText_workoutName = findViewById(R.id.edit_text_workoutname);
 
+        caloriesBurnedTextView = findViewById(R.id.text_view_burnedCalories);
+
 
         mTextViewCountDown = findViewById(R.id.text_view_countdown);
         countdown_task = findViewById(R.id.countdown_task);
@@ -119,6 +123,9 @@ public class WorkoutTimer extends AppCompatActivity {
         mButtonSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+                caloriesBurnedTextView.setVisibility(View.INVISIBLE);
 
                 countdown_task.setText("Work");
                 String inputWork = mEditTextInputWork.getText().toString();
@@ -161,7 +168,8 @@ public class WorkoutTimer extends AppCompatActivity {
             public void onClick(View v) {
                 inputCyclesNum = cyclesNum;
                 resetTimer();
-                setTime(workTime);
+                
+                setTimeDone(0);
 
                 OkHttpClient client = new OkHttpClient();
 
@@ -204,6 +212,8 @@ public class WorkoutTimer extends AppCompatActivity {
                                         String balls3 = balls2.getString("nf_calories");
                                         Log.d("idk", "makePost: " + balls3);
                                         activityCalories = balls3;
+                                        caloriesBurnedTextView.setVisibility(View.VISIBLE);
+                                        caloriesBurnedTextView.setText("You burned " + activityCalories+ " calories !!!!");
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
@@ -217,6 +227,7 @@ public class WorkoutTimer extends AppCompatActivity {
         });
 
         updateCountDownText();
+        caloriesBurnedTextView.setVisibility(View.INVISIBLE);
 //String , String gender, double weight_kg, double height_cm, int age
 
 
@@ -237,6 +248,21 @@ public class WorkoutTimer extends AppCompatActivity {
 
 
     }
+
+    private void setTimeDone(long milliseconds) {
+        if (inputCyclesNum % 2 == 0) {
+            background.setBackgroundColor(Color.parseColor("#00E400"));
+            countdown_task.setText("Work");
+        } else {
+            background.setBackgroundColor(Color.parseColor("#E42000"));
+            countdown_task.setText("Rest");
+        }
+        mStartTimeWork = milliseconds;
+        resetTimer();
+
+
+    }
+
 
 
     public void startTimer() {
@@ -334,6 +360,7 @@ public class WorkoutTimer extends AppCompatActivity {
             mButtonSet.setVisibility(View.VISIBLE);
 
             if (mTimerLeftInMillis < mStartTimeWork) {
+
                 mButtonReset.setVisibility(View.VISIBLE);
             } else {
                 mButtonReset.setVisibility(View.INVISIBLE);
