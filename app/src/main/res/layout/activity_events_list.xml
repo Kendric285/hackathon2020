@@ -42,5 +42,16 @@
         android:textColor="@android:color/black"
         android:textSize="40sp" />
 
+    <EditText
+        android:id="@+id/edit_text_workoutname"
+        android:layout_width="match_parent"
+        android:layout_height="153dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="125dp"
+        android:hint="EVENT"
+        android:inputType="text" />
+
 
 </RelativeLayout>
