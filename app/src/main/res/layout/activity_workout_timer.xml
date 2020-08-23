@@ -132,16 +132,18 @@
         android:id="@+id/text_view_burnedCalories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="165dp"
         android:layout_marginEnd="163dp"
         android:layout_marginBottom="356dp"
         android:text="hello"
+        android:textAlignment="center"
         android:textSize="30dp"
+
+
         android:visibility="invisible"
-        tools:visibility="visible"
-
-
-        />
+        tools:visibility="visible" />
 
 </RelativeLayout>

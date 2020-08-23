@@ -15,12 +15,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.RecyclerView;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -41,7 +38,7 @@ public class FoodTracker extends AppCompatActivity {
 
         ListView lv;
 
-        String balls3;
+        String calories;
 
 
     @Override
@@ -98,17 +95,23 @@ public class FoodTracker extends AppCompatActivity {
                                     try {
                                         JSONObject obj = new JSONObject(myResponse);
                                         Log.d("idk", "run: "+obj);
-                                   JSONArray balls = obj.getJSONArray("foods");
+                                   JSONArray foods = obj.getJSONArray("foods");
                                    //Log.d("idk", "run: "+balls);
-                                   JSONObject balls2 = balls.getJSONObject(0);
-                                   //Log.d("idk", "run: "+balls2);
-                                    balls3 = balls2.getString("nf_calories");
-                                    String balls4 = balls2.getString("nf_total_fat");
-                                        String balls5 = balls2.getString("nf_protein");
+                                   JSONObject foodsJSONObject = foods.getJSONObject(0);
+                                   //Log.d("idk", ": "+balls2);
+                                    calories = foodsJSONObject.getString("nf_calories");
+                                    String fat = foodsJSONObject.getString("nf_total_fat");
+                                    String protein = foodsJSONObject.getString("nf_protein");
                                    //itemlist.add(itemText.getText().toString());
-                                   Log.d("idk", "makePost: " + balls3);
+                                   Log.d("idk", "makePost: " + calories);
+                                   String food = itemText.getText().toString().toUpperCase();
+                                   String color = "<font color='#EE0000'></font>";
 
-                                        itemlist.add((itemText.getText().toString())+"           "+balls3+"-calories     \n"+balls4+"-fat          "+balls5+"-protein");
+
+
+
+
+                                        itemlist.add((food +": "+ calories +"-calories, "+fat+"-fat, "+protein+"-protein"));
                                         itemText.setText("");
                                         adapter.notifyDataSetChanged();
                                    //activityCalories = balls3;
