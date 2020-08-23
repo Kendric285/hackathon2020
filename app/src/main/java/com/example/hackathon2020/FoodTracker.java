@@ -28,13 +28,6 @@ public class FoodTracker extends AppCompatActivity {
 
         ListView lv;
 
-        RecyclerView mRecyclerView;
-        RecyclerView.Adapter mAdapter;
-        RecyclerView.LayoutManager mLayoutManager;
-
-        List<String> myDataset = new ArrayList<>()
-
-
 
 
 
@@ -54,28 +47,11 @@ public class FoodTracker extends AppCompatActivity {
         View.OnClickListener addlistener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myDataset.add(itemText.getText().toString());
+                itemlist.add(itemText.getText().toString());
                 itemText.setText("");
-                mAdapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
             }
         };
-
-        ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-
-            @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                return false;
-            }
-
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                int position = viewHolder.getAdapterPosition();
-                myDataset.remove(position);
-                mAdapter.notifyDataSetChanged();
-            }
-        });
-
-        helper.attachToRecyclerView(recyclerView);
 
    lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
        @Override
@@ -134,7 +110,7 @@ public class FoodTracker extends AppCompatActivity {
        }
    });
    */
-           //itemlist.remove(position);
+           itemlist.remove(position);
 
                   // positionchecker.clear();
 
@@ -152,65 +128,4 @@ public class FoodTracker extends AppCompatActivity {
 
     }
 
-    public void getFoodCalories(String food){
-
-=======
-    public void getFoodCalories(String food){
->>>>>>> parent of 81e72d2... kjb
-
-    public int getFoodCalories(String food){
-
-=======
-
-
-
-=======
-    public int getFoodCalories(String food){
-
-
-
->>>>>>> parent of 81e72d2... kjb
-        String url = "https://api.nutritionix.com/v1_1/search/" + food + "?results=0:20&fields=nf_calories&appId=0f3b890a&appKey=3d447e1e0e5624f64283de31e44a3333";
-        final Request request = new Request.Builder()
-                .url(url)
-                .get()
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-                Log.d("mode", "onFailure: ");
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    final String myResponse = response.body().string();
-                    // Log.d("mode", "onResponse: " + myResponse);
-
-                    FoodTracker.this.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                JSONObject obj = new JSONObject(myResponse);
-                                //JSONArray info = obj.getJSONArray("sprites");
-                                cal = obj.getDouble("nf_calories");
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    });
-                }
-            }
-        });
-
-
-
-        return (int)Math.round(cal);
-
-
-
     }
-}
->>>>>>> parent of 81e72d2... kjb
