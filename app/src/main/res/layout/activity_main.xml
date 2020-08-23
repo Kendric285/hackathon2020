@@ -15,7 +15,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="448dp"
-        android:background="@drawable/button_background"
         android:text="Food Tracker" />
 
 
@@ -28,7 +27,6 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="152dp"
-        android:background="@drawable/button_background"
         android:text="Workout Examples" />
 
     <Button
@@ -40,7 +38,6 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="23dp"
         android:layout_marginBottom="47dp"
-        android:background="@drawable/button_background"
         android:text="Workout Timer" />
 
     <Button
@@ -51,7 +48,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="250dp"
-        android:background="@drawable/button_background"
         android:text="Workout videos" />
 
     <Button
@@ -62,7 +58,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="349dp"
-        android:background="@drawable/button_background"
         android:text="Calendar" />
 
     <ImageView
