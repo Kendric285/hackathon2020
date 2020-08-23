@@ -48,9 +48,12 @@ public class EventsList extends AppCompatActivity {
         View.OnClickListener addlistener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                itemList.add(itemText.getText().toString());
-                itemText.setText("");
-                adapter.notifyDataSetChanged();
+
+
+                    itemList.add(itemText.getText().toString());
+                    itemText.setText("");
+                    adapter.notifyDataSetChanged();
+
             }
 
         };
