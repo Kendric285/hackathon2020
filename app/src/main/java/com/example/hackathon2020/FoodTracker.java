@@ -104,7 +104,7 @@ public class FoodTracker extends AppCompatActivity {
     }
 
 
-/*
+
     public int getFoodCalories(String food){
 
 
@@ -112,7 +112,7 @@ public class FoodTracker extends AppCompatActivity {
         String url = "https://api.nutritionix.com/v1_1/search/" + food + "?results=0:20&fields=nf_calories&appId=0f3b890a&appKey=3d447e1e0e5624f64283de31e44a3333";
         final Request request = new Request.Builder()
                 .url(url)
-                .get()
+                .post()
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
@@ -152,5 +152,4 @@ public class FoodTracker extends AppCompatActivity {
 
     }
 
- */
 }
