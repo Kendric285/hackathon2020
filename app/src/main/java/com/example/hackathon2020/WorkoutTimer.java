@@ -167,7 +167,8 @@ public class WorkoutTimer extends AppCompatActivity {
 
                 final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
-                String demoQuery = "{\"query\":\"ran 3 miles\",\"gender\":\"female\",\"weight_kg\":72.5,\"height_cm\":167.64,\"age\":30}";
+                if(ca)
+                String demoQuery = "{\"query\":\"ran ."+ ((workTime/1000)*(cyclesNum/2)) +" miles\",\"gender\":\"female\",\"weight_kg\":72.5,\"height_cm\":167.64,\"age\":30}";
 
                 RequestBody body = RequestBody.create(demoQuery, JSON);
                 final Request request = new Request.Builder()
@@ -201,7 +202,7 @@ public class WorkoutTimer extends AppCompatActivity {
                                         JSONObject balls2 = balls.getJSONObject(0);
                                         //Log.d("idk", "run: "+balls2);
                                         String balls3 = balls2.getString("nf_calories");
-                                        //Log.d("idk", "makePost: " + balls3);
+                                        Log.d("idk", "makePost: " + balls3);
                                         activityCalories = balls3;
                                     } catch (JSONException e) {
                                         e.printStackTrace();
