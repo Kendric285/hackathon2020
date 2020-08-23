@@ -45,7 +45,7 @@
         android:layout_marginEnd="-4dp"
         android:layout_marginBottom="152dp"
         android:background="@drawable/button_background"
-        android:text="Food Track" />
+        android:text="Food Tracker" />
 
     <Button
         android:id="@+id/toCalendar"
