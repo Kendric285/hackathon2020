@@ -73,7 +73,7 @@ public class FoodTracker extends AppCompatActivity {
 
     }
 
-    
+
 
 
 
