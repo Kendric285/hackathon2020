@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CalendarView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class Calendar extends AppCompatActivity {
@@ -23,6 +24,16 @@ public class Calendar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+        SharedPref sharedpref = new SharedPref(this);
+
+        if (sharedpref.mode() == 1) {
+            RelativeLayout root = findViewById(R.id.root);
+            root.setBackgroundResource(R.drawable.background);
+        }
+        if (sharedpref.mode() == 2) {
+            RelativeLayout root = findViewById(R.id.root);
+            root.setBackgroundResource(R.drawable.background2);
+        }
 
         calender = (CalendarView) findViewById(R.id.calender);
         date_view = (TextView) findViewById(R.id.date_view);

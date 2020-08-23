@@ -1,11 +1,13 @@
 package com.example.hackathon2020;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.squareup.picasso.Picasso;
 
@@ -25,6 +27,16 @@ public class WorkoutsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workouts);
+        SharedPref sharedpref = new SharedPref(this);
+
+        if (sharedpref.mode() == 1) {
+            ConstraintLayout root = findViewById(R.id.root);
+            root.setBackgroundResource(R.drawable.background);
+        }
+        if (sharedpref.mode() == 2) {
+            ConstraintLayout root = findViewById(R.id.root);
+            root.setBackgroundResource(R.drawable.background2);
+        }
         workouts = new ArrayList<String>();
         workouts.add("https://darebee.com/images/workouts/lazy-bear-workout-intro.jpg");
         workouts.add("https://darebee.com/images/workouts/ultra-workout-intro.jpg");

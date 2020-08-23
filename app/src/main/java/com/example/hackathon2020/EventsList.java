@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -32,6 +33,16 @@ public class EventsList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_list);
+        SharedPref sharedpref = new SharedPref(this);
+
+        if (sharedpref.mode() == 1) {
+            RelativeLayout root = findViewById(R.id.root);
+            root.setBackgroundResource(R.drawable.background);
+        }
+        if (sharedpref.mode() == 2) {
+            RelativeLayout root = findViewById(R.id.root);
+            root.setBackgroundResource(R.drawable.background2);
+        }
 
         Intent intent = getIntent();
 

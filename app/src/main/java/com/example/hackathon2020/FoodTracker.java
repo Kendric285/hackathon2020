@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,6 +46,17 @@ public class FoodTracker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_tracker);
+        SharedPref sharedpref = new SharedPref(this);
+
+        if (sharedpref.mode() == 1) {
+            RelativeLayout root = findViewById(R.id.root);
+            root.setBackgroundResource(R.drawable.background);
+        }
+        if (sharedpref.mode() == 2) {
+            RelativeLayout root = findViewById(R.id.root);
+            root.setBackgroundResource(R.drawable.background2);
+        }
+
 
         lv = (ListView) findViewById(R.id.ListView);
         itemText= (EditText) findViewById(R.id.addtext);
