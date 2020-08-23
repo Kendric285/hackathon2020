@@ -159,9 +159,9 @@ public class WorkoutTimer extends AppCompatActivity {
         mButtonReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                inputCyclesNum = cyclesNum;
-                resetTimer();
-                setTime(workTime);
+               // inputCyclesNum = cyclesNum;
+                //resetTimer();
+                //setTime(workTime);
 
                 OkHttpClient client = new OkHttpClient();
 
