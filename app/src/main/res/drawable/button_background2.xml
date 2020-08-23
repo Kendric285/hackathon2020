@@ -16,7 +16,7 @@
 
     <stroke
         android:width="5dp"
-        android:color="#FFC66C" />
+        android:color="#71D7FF" />
     <!--android:dashGap="1dp"
     android:dashWidth="4dp"-->
     <corners android:radius="15dp" />
