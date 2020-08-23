@@ -152,6 +152,60 @@ public class FoodTracker extends AppCompatActivity {
 
     }
 
+<<<<<<< HEAD
 }
+=======
+    public void getFoodCalories(String food){
+
+>>>>>>> parent of 81e72d2... kjb
+
+    public int getFoodCalories(String food){
+
+<<<<<<< HEAD
+=======
 
 
+        String url = "https://api.nutritionix.com/v1_1/search/" + food + "?results=0:20&fields=nf_calories&appId=0f3b890a&appKey=3d447e1e0e5624f64283de31e44a3333";
+        final Request request = new Request.Builder()
+                .url(url)
+                .get()
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+                Log.d("mode", "onFailure: ");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    final String myResponse = response.body().string();
+                    // Log.d("mode", "onResponse: " + myResponse);
+
+                    FoodTracker.this.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                JSONObject obj = new JSONObject(myResponse);
+                                //JSONArray info = obj.getJSONArray("sprites");
+                                cal = obj.getDouble("nf_calories");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                }
+            }
+        });
+
+
+
+        return (int)Math.round(cal);
+
+
+
+    }
+}
+>>>>>>> parent of 81e72d2... kjb
