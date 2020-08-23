@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -95,7 +96,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
     }
+
+
 
     public void restartApp() {
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
