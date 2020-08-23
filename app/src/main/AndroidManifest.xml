@@ -13,7 +13,7 @@
         android:theme="@style/Theme.AppCompat.NoActionBar">
 
         <activity android:name=".WorkoutsActivity"></activity>
-=======
+
         <activity android:name=".WorkoutExamples"></activity>
 
         <activity android:name=".EventsList" />
