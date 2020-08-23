@@ -50,7 +50,7 @@ public class Workoutvids extends AppCompatActivity {
 
                 WebView webview;
                 webview = findViewById(R.id.website);
-                webview.loadUrl("https://www.boredbutton.com");
+                webview.loadUrl("https://www.youtube.com/watch?v=50kH47ZztHs");
                 webview.setInitialScale(100);
 
                 webview.getSettings().setLoadsImagesAutomatically(true);
@@ -70,7 +70,7 @@ public class Workoutvids extends AppCompatActivity {
 
                 WebView webview;
                 webview = findViewById(R.id.website);
-                webview.loadUrl("https://www.mydomaine.com/things-to-do-when-bored");
+                webview.loadUrl("https://www.youtube.com/watch?v=CBWQGb4LyAM");
                 webview.setInitialScale(100);
 
                 webview.getSettings().setLoadsImagesAutomatically(true);
@@ -90,7 +90,7 @@ public class Workoutvids extends AppCompatActivity {
 
                 WebView webview;
                 webview = findViewById(R.id.website);
-                webview.loadUrl("http://brainden.com/bored.htm");
+                webview.loadUrl("https://greatist.com/move/best-free-workout-videos-youtube");
                 webview.setInitialScale(100);
 
                 webview.getSettings().setLoadsImagesAutomatically(true);
@@ -110,7 +110,7 @@ public class Workoutvids extends AppCompatActivity {
 
                 WebView webview;
                 webview = findViewById(R.id.website);
-                webview.loadUrl("https://medium.com/the-graph/60-youtube-channels-that-will-make-you-smarter-44d8315c2548");
+                webview.loadUrl("https://www.youtube.com/watch?v=gC_L9qAHVJ8");
                 webview.setInitialScale(100);
 
                 webview.getSettings().setLoadsImagesAutomatically(true);
@@ -130,7 +130,7 @@ public class Workoutvids extends AppCompatActivity {
 
                 WebView webview;
                 webview = findViewById(R.id.website);
-                webview.loadUrl("https://theuselessweb.com/");
+                webview.loadUrl("https://www.youtube.com/watch?v=UItWltVZZmE");
                 webview.setInitialScale(100);
 
                 webview.getSettings().setLoadsImagesAutomatically(true);
@@ -150,7 +150,7 @@ public class Workoutvids extends AppCompatActivity {
 
                 WebView webview;
                 webview = findViewById(R.id.website);
-                webview.loadUrl("https://www.ph4.org/web_random.php");
+                webview.loadUrl("https://www.youtube.com/watch?v=1fbU_MkV7NE");
                 webview.setInitialScale(100);
 
                 webview.getSettings().setLoadsImagesAutomatically(true);
@@ -170,7 +170,7 @@ public class Workoutvids extends AppCompatActivity {
 
                 WebView webview;
                 webview = findViewById(R.id.website);
-                webview.loadUrl("https://random-ize.com/random-website/");
+                webview.loadUrl("https://www.youtube.com/watch?v=aclHkVaku9U");
                 webview.setInitialScale(100);
 
                 webview.getSettings().setLoadsImagesAutomatically(true);
@@ -191,7 +191,7 @@ public class Workoutvids extends AppCompatActivity {
 
                 WebView webview;
                 webview = findViewById(R.id.website);
-                webview.loadUrl("https://8tracks.com/explore/random");
+                webview.loadUrl("https://www.youtube.com/watch?v=lpgWK7wYMU4");
                 webview.setInitialScale(100);
 
                 webview.getSettings().setLoadsImagesAutomatically(true);

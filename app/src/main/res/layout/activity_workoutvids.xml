@@ -34,22 +34,22 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="163dp"
-      android:layout_marginRight="163dp"
-      android:layout_marginBottom="173dp"
+      android:layout_marginEnd="165dp"
+      android:layout_marginRight="165dp"
+      android:layout_marginBottom="297dp"
       android:text="Videos"
       android:textSize="30dp" />
 
   <WebView
       android:id="@+id/website"
       android:layout_width="match_parent"
-      android:layout_height="381dp"
+      android:layout_height="256dp"
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
       android:layout_marginEnd="0dp"
       android:layout_marginRight="0dp"
-      android:layout_marginBottom="218dp" />
+      android:layout_marginBottom="342dp" />
 
   <Button
       android:id="@+id/button"
@@ -58,11 +58,11 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="320dp"
-      android:layout_marginRight="320dp"
-      android:layout_marginBottom="121dp"
+      android:layout_marginEnd="287dp"
+      android:layout_marginRight="287dp"
+      android:layout_marginBottom="244dp"
       android:gravity="bottom"
-      android:text="Bored Button" />
+      android:text="Exercise" />
 
   <Button
       android:id="@+id/button2"
@@ -71,11 +71,11 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="316dp"
-      android:layout_marginRight="316dp"
-      android:layout_marginBottom="6dp"
+      android:layout_marginEnd="19dp"
+      android:layout_marginRight="19dp"
+      android:layout_marginBottom="167dp"
       android:gravity="bottom"
-      android:text="95 Things" />
+      android:text="Exericse" />
 
   <Button
       android:id="@+id/button3"
@@ -84,11 +84,11 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="316dp"
-      android:layout_marginRight="316dp"
-      android:layout_marginBottom="63dp"
+      android:layout_marginEnd="293dp"
+      android:layout_marginRight="293dp"
+      android:layout_marginBottom="167dp"
       android:gravity="bottom"
-      android:text="Brainden" />
+      android:text="Exericse" />
 
   <Button
       android:id="@+id/button4"
@@ -97,11 +97,11 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="156dp"
-      android:layout_marginRight="156dp"
-      android:layout_marginBottom="123dp"
+      android:layout_marginEnd="162dp"
+      android:layout_marginRight="162dp"
+      android:layout_marginBottom="241dp"
       android:gravity="bottom"
-      android:text="Info Channels" />
+      android:text="Exericse" />
 
   <Button
       android:id="@+id/button5"
@@ -110,11 +110,11 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="156dp"
-      android:layout_marginRight="156dp"
-      android:layout_marginBottom="62dp"
+      android:layout_marginEnd="26dp"
+      android:layout_marginRight="26dp"
+      android:layout_marginBottom="243dp"
       android:gravity="bottom"
-      android:text="Useless Web" />
+      android:text="Exericse" />
 
   <Button
       android:id="@+id/button6"
@@ -123,11 +123,11 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="155dp"
-      android:layout_marginRight="155dp"
-      android:layout_marginBottom="6dp"
+      android:layout_marginEnd="157dp"
+      android:layout_marginRight="157dp"
+      android:layout_marginBottom="165dp"
       android:gravity="bottom"
-      android:text="Random Site" />
+      android:text="Situps" />
 
   <Button
       android:id="@+id/button7"
@@ -136,11 +136,11 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="2dp"
-      android:layout_marginRight="2dp"
-      android:layout_marginBottom="122dp"
+      android:layout_marginEnd="290dp"
+      android:layout_marginRight="290dp"
+      android:layout_marginBottom="74dp"
       android:gravity="bottom"
-      android:text="Yeah.." />
+      android:text="Squats" />
 
   <Button
       android:id="@+id/button8"
@@ -149,11 +149,11 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="2dp"
-      android:layout_marginRight="2dp"
-      android:layout_marginBottom="61dp"
+      android:layout_marginEnd="158dp"
+      android:layout_marginRight="158dp"
+      android:layout_marginBottom="76dp"
       android:gravity="bottom"
-      android:text="Random Music" />
+      android:text="Push-Ups" />
 
   <Button
       android:id="@+id/button9"
@@ -162,9 +162,9 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="2dp"
-      android:layout_marginRight="2dp"
-      android:layout_marginBottom="6dp"
+      android:layout_marginEnd="21dp"
+      android:layout_marginRight="21dp"
+      android:layout_marginBottom="81dp"
       android:gravity="bottom"
       android:onClick="videos"
       android:text="Random Videos" />
