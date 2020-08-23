@@ -168,7 +168,7 @@ public class WorkoutTimer extends AppCompatActivity {
                 final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
 
-                String demoQuery = "{\"query\":\"ran ."+ ((workTime/1000)*(cyclesNum/2)) +" miles\",\"gender\":\"female\",\"weight_kg\":72.5,\"height_cm\":167.64,\"age\":30}";
+                String demoQuery = "{\"query\":\""+ workoutName +" for "+ ((workTime/1000)*(cyclesNum/2)) +" minutes\",\"gender\":\"female\",\"weight_kg\":72.5,\"height_cm\":167.64,\"age\":30}";
 
                 RequestBody body = RequestBody.create(demoQuery, JSON);
                 final Request request = new Request.Builder()
