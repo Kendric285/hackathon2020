@@ -4,9 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class EventsList extends AppCompatActivity {
+    ArrayList<String> itemList;
+    ArrayAdapter<String> adapter;
+    EditText itemText;
+    Button addbutton;
+    ListView lv;
 
     Integer month;
     Integer day;
@@ -25,9 +37,26 @@ public class EventsList extends AppCompatActivity {
 
         textView_date = findViewById(R.id.textview_date);
 
+        lv =(ListView) findViewById(R.id.listView);
+        itemText =(EditText) findViewById(R.id.addtext);
+        addbutton =(Button) findViewById(R.id.addbutton);
 
+        itemList = new ArrayList<>();
 
+        adapter = new ArrayAdapter<String>(EventsList.this,android.R.layout.simple_list_item_multiple_choice,itemList);
 
+        View.OnClickListener addlistener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemList.add(itemText.getText().toString());
+                itemText.setText("");
+                adapter.notifyDataSetChanged();
+            }
+
+        };
+
+        addbutton.setOnClickListener(addlistener);
+        lv.setAdapter(adapter);
 
 
         month = intent.getIntExtra("month", 0);
