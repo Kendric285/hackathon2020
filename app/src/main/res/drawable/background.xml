@@ -4,10 +4,10 @@
         <shape>
             <corners android:radius="0dip" />
             <gradient
-                android:startColor="@color/startColor"
-                android:centerColor="@color/centerColor"
-                android:centerY="0.75"
-                android:endColor="@color/endColor"
+                android:startColor="#71D7FF"
+                android:centerColor="@android:color/white"
+                android:centerY="1"
+                android:endColor="@android:color/white"
                 android:angle="270"
                 />
         </shape>

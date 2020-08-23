@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Button toFoodTracker;
     Button toCalendar;
     Button toWorkoutsActivity;
-    Button toWorkoutVids;
+   // Button toWorkoutVids;
     ImageView settings;
 
 
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         toTimer = findViewById(R.id.toTimer);
         toFoodTracker = findViewById(R.id.toFoodTracker);
         toWorkoutsActivity = findViewById(R.id.toWorkoutsActivity);
-        toWorkoutVids = findViewById(R.id.toWorkoutVids);
+       // toWorkoutVids = findViewById(R.id.toWorkoutVids);
 
 
 
@@ -98,13 +99,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        toWorkoutVids.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toWorkoutVids();
-            }
-        });
+
+
     }
+
+
 
     public void restartApp() {
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
@@ -139,8 +138,5 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public void toWorkoutVids(){
-        Intent toWorkoutVids = new Intent(this,Workoutvids.class);
-        startActivity(toWorkoutVids);
-    }
+
 }
