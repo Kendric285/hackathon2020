@@ -4,26 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FoodTracker">
+    tools:context=".FoodTracker"
+    android:background="#1B1B1B">
 
     <EditText
         android:id="@+id/addtext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint=" Food/Calories"></EditText>
+        android:hint="Food name"
+        android:textColorHint="#C8C8C8"
+        android:textColor="@android:color/black"
+        android:background="@drawable/workout_timer_background"
+        ></EditText>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="add Food"
         android:id="@+id/addbutton"
-        android:layout_below="@+id/addtext" />
+        android:layout_below="@+id/addtext"
+        android:background="@drawable/button_background"/>
 
     <ListView
         android:id="@+id/ListView"
         android:layout_width="match_parent"
         android:layout_height="643dp"
         android:layout_below="@+id/addbutton"
-        android:layout_marginTop="-5dp" />
+        android:layout_marginTop="-5dp"
+        android:background="#1B1B1B" />
 
 </RelativeLayout>

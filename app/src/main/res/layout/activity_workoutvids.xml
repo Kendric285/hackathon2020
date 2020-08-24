@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
   <TextView
       android:id="@+id/home"
@@ -10,8 +11,13 @@
       android:layout_height="61dp"
       android:gravity="left|center"
       android:onClick="home"
-      android:text="     Quaran-Size"
-      android:textSize="18sp" />
+      android:text="Quaran-Size"
+
+      android:textAlignment="center"
+      android:textColor="@android:color/black"
+      android:visibility="invisible"
+
+      android:textSize="30sp" />
 
   <ImageView
       android:id="@+id/settings"
@@ -25,31 +31,28 @@
       android:layout_marginBottom="10dp"
       android:background="@drawable/settings"
       android:foregroundGravity="center"
-      android:onClick="settings" />
+      android:onClick="settings"
+      android:visibility="invisible"
+      />
 
   <TextView
       android:id="@+id/Video"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_width="174dp"
+      android:layout_height="67dp"
+      android:layout_alignParentStart="true"
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="165dp"
-      android:layout_marginRight="165dp"
-      android:layout_marginBottom="297dp"
+      android:layout_marginStart="109dp"
+      android:layout_marginEnd="109dp"
+      android:layout_marginRight="113dp"
+      android:layout_marginBottom="644dp"
+      android:background="@drawable/workout_timer_background"
       android:text="Videos"
-      android:textSize="30dp" />
 
-  <WebView
-      android:id="@+id/website"
-      android:layout_width="match_parent"
-      android:layout_height="256dp"
-      android:layout_alignParentEnd="true"
-      android:layout_alignParentRight="true"
-      android:layout_alignParentBottom="true"
-      android:layout_marginEnd="0dp"
-      android:layout_marginRight="0dp"
-      android:layout_marginBottom="342dp" />
+      android:textAlignment="center"
+      android:textColor="@android:color/black"
+      android:textSize="30dp" />
 
   <Button
       android:id="@+id/button"
@@ -58,11 +61,12 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="287dp"
-      android:layout_marginRight="287dp"
-      android:layout_marginBottom="244dp"
-      android:gravity="bottom"
-      android:text="Exercise" />
+      android:layout_marginEnd="274dp"
+      android:layout_marginRight="274dp"
+      android:layout_marginBottom="547dp"
+      android:background="@drawable/button_background"
+      android:text="Cardio"
+      android:textAlignment="center" />
 
   <Button
       android:id="@+id/button2"
@@ -71,11 +75,12 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="19dp"
-      android:layout_marginRight="19dp"
-      android:layout_marginBottom="167dp"
-      android:gravity="bottom"
-      android:text="Exericse" />
+      android:layout_marginEnd="139dp"
+      android:layout_marginRight="139dp"
+      android:layout_marginBottom="548dp"
+      android:background="@drawable/button_background"
+      android:text="Cardio"
+      android:textAlignment="center" />
 
   <Button
       android:id="@+id/button3"
@@ -84,11 +89,12 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="293dp"
-      android:layout_marginRight="293dp"
-      android:layout_marginBottom="167dp"
-      android:gravity="bottom"
-      android:text="Exericse" />
+      android:layout_marginEnd="274dp"
+      android:layout_marginRight="274dp"
+      android:layout_marginBottom="465dp"
+      android:text="Upper Body"
+      android:textAlignment="center"
+      android:background="@drawable/button_background"/>
 
   <Button
       android:id="@+id/button4"
@@ -97,11 +103,12 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="162dp"
-      android:layout_marginRight="162dp"
-      android:layout_marginBottom="241dp"
-      android:gravity="bottom"
-      android:text="Exericse" />
+      android:layout_marginEnd="6dp"
+      android:layout_marginRight="6dp"
+      android:layout_marginBottom="463dp"
+      android:text="Upper Body"
+      android:textAlignment="center"
+      android:background="@drawable/button_background"/>
 
   <Button
       android:id="@+id/button5"
@@ -110,11 +117,12 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="26dp"
-      android:layout_marginRight="26dp"
-      android:layout_marginBottom="243dp"
-      android:gravity="bottom"
-      android:text="Exericse" />
+      android:layout_marginEnd="6dp"
+      android:layout_marginRight="6dp"
+      android:layout_marginBottom="547dp"
+      android:background="@drawable/button_background"
+      android:text="Cardio"
+      android:textAlignment="center" />
 
   <Button
       android:id="@+id/button6"
@@ -123,11 +131,12 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="157dp"
-      android:layout_marginRight="157dp"
-      android:layout_marginBottom="165dp"
-      android:gravity="bottom"
-      android:text="Situps" />
+      android:layout_marginEnd="139dp"
+      android:layout_marginRight="139dp"
+      android:layout_marginBottom="462dp"
+      android:background="@drawable/button_background"
+      android:text="Upper Body"
+      android:textAlignment="center" />
 
   <Button
       android:id="@+id/button7"
@@ -136,11 +145,12 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="290dp"
-      android:layout_marginRight="290dp"
-      android:layout_marginBottom="74dp"
-      android:gravity="bottom"
-      android:text="Squats" />
+      android:layout_marginEnd="279dp"
+      android:layout_marginRight="279dp"
+      android:layout_marginBottom="380dp"
+      android:text="Legs"
+      android:textAlignment="center"
+      android:background="@drawable/button_background"/>
 
   <Button
       android:id="@+id/button8"
@@ -149,11 +159,12 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="158dp"
-      android:layout_marginRight="158dp"
-      android:layout_marginBottom="76dp"
-      android:gravity="bottom"
-      android:text="Push-Ups" />
+      android:layout_marginEnd="141dp"
+      android:layout_marginRight="141dp"
+      android:layout_marginBottom="383dp"
+      android:background="@drawable/button_background"
+      android:text="Push-Ups"
+      android:textAlignment="center" />
 
   <Button
       android:id="@+id/button9"
@@ -162,11 +173,12 @@
       android:layout_alignParentEnd="true"
       android:layout_alignParentRight="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginEnd="21dp"
-      android:layout_marginRight="21dp"
-      android:layout_marginBottom="81dp"
-      android:gravity="bottom"
+      android:layout_marginEnd="5dp"
+      android:layout_marginRight="5dp"
+      android:layout_marginBottom="384dp"
+      android:background="@drawable/button_background"
       android:onClick="videos"
-      android:text="Random Videos" />
+      android:text="Random Videos"
+      android:textAlignment="center" />
 
 </RelativeLayout>

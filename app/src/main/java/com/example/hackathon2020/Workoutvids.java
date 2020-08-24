@@ -2,6 +2,7 @@ package com.example.hackathon2020;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -48,18 +49,12 @@ public class Workoutvids extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                WebView webview;
-                webview = findViewById(R.id.website);
-                webview.loadUrl("https://www.youtube.com/watch?v=50kH47ZztHs");
-                webview.setInitialScale(100);
 
-                webview.getSettings().setLoadsImagesAutomatically(true);
-                webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-                webview.getSettings().setPluginState(WebSettings.PluginState.ON);
-                WebSettings webSettings = webview.getSettings();
-                webview.setWebViewClient(new MyBrowser());
-                webSettings.setJavaScriptEnabled(true);
-                webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=50kH47ZztHs"));
+                startActivity(intent);
+
+
 
             }
         });
@@ -68,18 +63,10 @@ public class Workoutvids extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                WebView webview;
-                webview = findViewById(R.id.website);
-                webview.loadUrl("https://www.youtube.com/watch?v=CBWQGb4LyAM");
-                webview.setInitialScale(100);
 
-                webview.getSettings().setLoadsImagesAutomatically(true);
-                webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-                webview.getSettings().setPluginState(WebSettings.PluginState.ON);
-                WebSettings webSettings = webview.getSettings();
-                webview.setWebViewClient(new MyBrowser());
-                webSettings.setJavaScriptEnabled(true);
-                webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=CBWQGb4LyAM"));
+                startActivity(intent);
 
             }
         });
@@ -88,18 +75,10 @@ public class Workoutvids extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                WebView webview;
-                webview = findViewById(R.id.website);
-                webview.loadUrl("https://greatist.com/move/best-free-workout-videos-youtube");
-                webview.setInitialScale(100);
 
-                webview.getSettings().setLoadsImagesAutomatically(true);
-                webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-                webview.getSettings().setPluginState(WebSettings.PluginState.ON);
-                WebSettings webSettings = webview.getSettings();
-                webview.setWebViewClient(new MyBrowser());
-                webSettings.setJavaScriptEnabled(true);
-                webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=BMLhJvhWZ0E"));
+                startActivity(intent);
 
             }
         });
@@ -108,19 +87,10 @@ public class Workoutvids extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                WebView webview;
-                webview = findViewById(R.id.website);
-                webview.loadUrl("https://www.youtube.com/watch?v=gC_L9qAHVJ8");
-                webview.setInitialScale(100);
 
-                webview.getSettings().setLoadsImagesAutomatically(true);
-                webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-                webview.getSettings().setPluginState(WebSettings.PluginState.ON);
-                WebSettings webSettings = webview.getSettings();
-                webview.setWebViewClient(new MyBrowser());
-                webSettings.setJavaScriptEnabled(true);
-                webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
 
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.fitnessblender.com/videos/home-upper-body-workout-without-weights-bodyweight-workout-for-beginners"));
+                startActivity(intent);
             }
         });
         Button button5 = findViewById(R.id.button5);
@@ -128,18 +98,9 @@ public class Workoutvids extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                WebView webview;
-                webview = findViewById(R.id.website);
-                webview.loadUrl("https://www.youtube.com/watch?v=UItWltVZZmE");
-                webview.setInitialScale(100);
 
-                webview.getSettings().setLoadsImagesAutomatically(true);
-                webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-                webview.getSettings().setPluginState(WebSettings.PluginState.ON);
-                WebSettings webSettings = webview.getSettings();
-                webview.setWebViewClient(new MyBrowser());
-                webSettings.setJavaScriptEnabled(true);
-                webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=W5IiasNutB8"));
+                startActivity(intent);
 
             }
         });
@@ -148,18 +109,10 @@ public class Workoutvids extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                WebView webview;
-                webview = findViewById(R.id.website);
-                webview.loadUrl("https://www.youtube.com/watch?v=1fbU_MkV7NE");
-                webview.setInitialScale(100);
 
-                webview.getSettings().setLoadsImagesAutomatically(true);
-                webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-                webview.getSettings().setPluginState(WebSettings.PluginState.ON);
-                WebSettings webSettings = webview.getSettings();
-                webview.setWebViewClient(new MyBrowser());
-                webSettings.setJavaScriptEnabled(true);
-                webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=HRvFxrFGqA4"));
+                startActivity(intent);
 
             }
         });
@@ -168,19 +121,11 @@ public class Workoutvids extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                WebView webview;
-                webview = findViewById(R.id.website);
-                webview.loadUrl("https://www.youtube.com/watch?v=aclHkVaku9U");
-                webview.setInitialScale(100);
 
-                webview.getSettings().setLoadsImagesAutomatically(true);
-                webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-                webview.getSettings().setPluginState(WebSettings.PluginState.ON);
-                WebSettings webSettings = webview.getSettings();
-                webview.setWebViewClient(new MyBrowser());
-                webSettings.setJavaScriptEnabled(true);
-                webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
 
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=aclHkVaku9U"));
+                startActivity(intent);
 
             }
         });
@@ -189,18 +134,9 @@ public class Workoutvids extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                WebView webview;
-                webview = findViewById(R.id.website);
-                webview.loadUrl("https://www.youtube.com/watch?v=lpgWK7wYMU4");
-                webview.setInitialScale(100);
 
-                webview.getSettings().setLoadsImagesAutomatically(true);
-                webview.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
-                webview.getSettings().setPluginState(WebSettings.PluginState.ON);
-                WebSettings webSettings = webview.getSettings();
-                webview.setWebViewClient(new MyBrowser());
-                webSettings.setJavaScriptEnabled(true);
-                webSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=lpgWK7wYMU4"));
+                startActivity(intent);
 
             }
         });
@@ -217,47 +153,5 @@ public class Workoutvids extends AppCompatActivity {
         startActivity(intentHome);
     }
 
-    private class MyBrowser extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
-            view.addJavascriptInterface(new Object() {
-                @JavascriptInterface
-                public void performClick() throws Exception {
-                    Log.d("LOGIN::", "Clicked");
-                }
-            }, "login");
-            return true;
-        }
-
-        @Override
-        public void onPageStarted(WebView view, String url, Bitmap favicon) {
-            // TODO Auto-generated method stub
-
-            System.out.println("started");
-
-            super.onPageStarted(view, url, favicon);
-
-        }
-
-        @Override
-        public void onPageFinished(WebView view, String url) {
-            // TODO Auto-generated method stub
-
-            System.out.println("ends");
-            super.onPageFinished(view, url);
-
-        }
-
-    }
-
-    @Override
-    public void onBackPressed() {
-        WebView webview;
-        webview = findViewById(R.id.website);
-        if (webview.canGoBack()){
-            webview.goBack();
-        }else{finish();}
-    }
 
 }
